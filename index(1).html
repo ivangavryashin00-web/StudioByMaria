@@ -1,0 +1,2701 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Мастерская Чудес — Авторские игрушки Мари</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Great+Vibes&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg: #fdf6f0;
+  --cream: #fef9f4;
+  --petal: #f9e8e8;
+  --blush: #f4c5c5;
+  --rose: #d4778a;
+  --deep-rose: #b5566a;
+  --mauve: #c9a0b0;
+  --dusty: #e8d0d8;
+  --gold: #d4a96a;
+  --warm-gold: #c4944a;
+  --sage: #9ab89a;
+  --lavender: #c5b8d8;
+  --dark: #2d1a20;
+  --mid: #7a4a58;
+  --soft: #b08090;
+  --border: rgba(212,119,138,.18);
+  --shadow: rgba(180,80,100,.12);
+  --font-fairy: 'Great Vibes', cursive;
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'Nunito', sans-serif;
+}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:var(--font-body);background:var(--bg);color:var(--dark);overflow-x:hidden;line-height:1.7;cursor:none}
+
+/* ─── CURSOR ─── */
+.cursor{position:fixed;pointer-events:none;z-index:9999;transition:transform .15s ease}
+.cursor-dot{width:8px;height:8px;background:var(--rose);border-radius:50%;position:fixed;transform:translate(-50%,-50%);pointer-events:none;z-index:9999;transition:transform .1s}
+.cursor-ring{width:36px;height:36px;border:1.5px solid var(--rose);border-radius:50%;position:fixed;transform:translate(-50%,-50%);pointer-events:none;z-index:9998;transition:all .2s ease;opacity:.6}
+
+/* ─── PARTICLES ─── */
+#petals{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.petal{position:absolute;pointer-events:none;user-select:none;animation:petalFall linear infinite;opacity:0}
+@keyframes petalFall{
+  0%{opacity:0;transform:translateY(-20px) rotate(0deg) scale(0)}
+  5%{opacity:.7}
+  95%{opacity:.3}
+  100%{opacity:0;transform:translateY(105vh) rotate(720deg) scale(.5)}
+}
+
+/* ─── HEADER ─── */
+.site-header{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  height:80px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 60px;
+  background:rgba(253,246,240,.92);
+  backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--border);
+  transition:box-shadow .4s;
+}
+.site-header.scrolled{box-shadow:0 4px 40px rgba(180,80,100,.1)}
+.logo-wrap{display:flex;flex-direction:column;line-height:1;text-decoration:none}
+.logo-fairy{font-family:var(--font-fairy);font-size:2.2rem;color:var(--rose);letter-spacing:.02em;line-height:1}
+.logo-sub{font-family:var(--font-display);font-size:.6rem;letter-spacing:.45em;text-transform:uppercase;color:var(--soft);margin-top:2px;font-weight:300}
+.nav{display:flex;gap:32px;list-style:none}
+.nav a{font-family:var(--font-display);font-size:.85rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color .3s;position:relative;padding-bottom:2px}
+.nav a::after{content:'✿';position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);font-size:.5rem;color:var(--rose);opacity:0;transition:opacity .3s}
+.nav a:hover{color:var(--rose)}
+.nav a:hover::after{opacity:1}
+.hdr-btn{font-family:var(--font-display);font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:#fff;background:linear-gradient(135deg,var(--rose),var(--deep-rose));padding:11px 30px;text-decoration:none;border-radius:30px;box-shadow:0 6px 20px rgba(180,80,100,.3);transition:all .3s;border:none;cursor:none}
+.hdr-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(180,80,100,.4)}
+
+/* ─── HERO ─── */
+.hero{min-height:100vh;display:grid;grid-template-columns:55% 45%;padding-top:80px;position:relative;z-index:1}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 15% 50%,rgba(249,232,232,.8) 0%,transparent 55%),radial-gradient(ellipse at 85% 20%,rgba(197,184,216,.4) 0%,transparent 50%),radial-gradient(ellipse at 60% 95%,rgba(154,184,154,.2) 0%,transparent 40%);pointer-events:none}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:80px 56px 80px 80px;position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.8);border:1px solid rgba(212,119,138,.25);padding:7px 18px;border-radius:100px;margin-bottom:32px;width:fit-content;backdrop-filter:blur(12px)}
+.badge-dot{width:7px;height:7px;border-radius:50%;background:var(--sage);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.2)}}
+.badge-text{font-family:var(--font-display);font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:var(--mid);font-weight:400}
+.hero-fairy-title{font-family:var(--font-fairy);font-size:clamp(3.5rem,6vw,6.5rem);color:var(--rose);line-height:1.1;margin-bottom:8px;filter:drop-shadow(0 2px 8px rgba(180,80,100,.15))}
+.hero-main-title{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;color:var(--dark);line-height:1.2;margin-bottom:28px;letter-spacing:.04em}
+.hero-main-title em{font-style:italic;color:var(--rose);font-weight:400}
+.hero-desc{font-size:.93rem;line-height:2;color:var(--mid);max-width:420px;margin-bottom:44px;font-weight:300}
+.hero-btns{display:flex;gap:18px;align-items:center;margin-bottom:52px}
+.btn-fairy{font-family:var(--font-display);font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:#fff;background:linear-gradient(135deg,var(--rose) 0%,var(--deep-rose) 100%);padding:15px 44px;text-decoration:none;display:inline-block;border-radius:30px;border:none;cursor:none;box-shadow:0 8px 28px rgba(180,80,100,.3),inset 0 1px 0 rgba(255,255,255,.2);transition:all .3s;position:relative;overflow:hidden}
+.btn-fairy::before{content:'';position:absolute;top:-50%;left:-60%;width:40%;height:200%;background:rgba(255,255,255,.15);transform:skewX(-20deg);transition:left .4s}
+.btn-fairy:hover::before{left:120%}
+.btn-fairy:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(180,80,100,.42)}
+.btn-outline{font-family:var(--font-display);font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--rose);text-decoration:none;display:flex;align-items:center;gap:8px;border:1.5px solid rgba(212,119,138,.4);padding:13px 28px;border-radius:30px;transition:all .3s;cursor:none}
+.btn-outline:hover{background:rgba(212,119,138,.08);border-color:var(--rose)}
+.hero-stats{display:flex;gap:0;border-top:1px solid rgba(212,119,138,.15);padding-top:24px}
+.stat{padding:14px 24px;text-align:center}
+.stat+.stat{border-left:1px solid rgba(212,119,138,.12)}
+.stat-n{font-family:var(--font-fairy);font-size:2.8rem;color:var(--rose);line-height:1}
+.stat-l{font-family:var(--font-display);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--soft);margin-top:2px}
+
+/* HERO RIGHT */
+.hero-right{position:relative;overflow:hidden}
+.hero-mosaic{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;height:100%;gap:3px;padding:3px}
+.hm-cell{overflow:hidden;position:relative}
+.hm-cell img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.25,.46,.45,.94)}
+.hm-cell:hover img{transform:scale(1.08)}
+.hm-cell:first-child{grid-row:1/3}
+.hm-cell::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 60%,rgba(45,26,32,.3));pointer-events:none}
+/* fairy overlay on hero images */
+.hm-cell::before{content:'✿';position:absolute;bottom:12px;left:50%;transform:translateX(-50%);font-size:1.1rem;color:rgba(255,255,255,.6);z-index:2;opacity:0;transition:opacity .3s}
+.hm-cell:hover::before{opacity:1}
+.hero-float-card{position:absolute;bottom:40px;left:36px;background:rgba(255,255,255,.97);padding:18px 22px;border-radius:16px;box-shadow:0 16px 50px rgba(180,80,100,.14);border:1px solid rgba(212,119,138,.12);max-width:240px;animation:float 7s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.float-quote{font-family:var(--font-display);font-style:italic;font-size:1rem;color:var(--dark);line-height:1.5;margin-bottom:5px}
+.float-auth{font-family:var(--font-display);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--soft)}
+
+/* ─── BAND ─── */
+.band{background:linear-gradient(135deg,var(--rose) 0%,var(--deep-rose) 100%);padding:15px 0;overflow:hidden;position:relative;z-index:2}
+.band::before,.band::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none}
+.band::before{left:0;background:linear-gradient(to right,var(--rose),transparent)}
+.band::after{right:0;background:linear-gradient(to left,var(--deep-rose),transparent)}
+.band-track{display:flex;animation:bandSlide 30s linear infinite;white-space:nowrap}
+@keyframes bandSlide{to{transform:translateX(-50%)}}
+.band-item{font-family:var(--font-display);font-style:italic;font-size:1.1rem;color:rgba(255,255,255,.92);padding:0 28px;flex-shrink:0;display:flex;align-items:center;gap:12px}
+.band-sep{font-size:.6rem;color:rgba(255,255,255,.45)}
+
+/* ─── PROMO VIDEO SECTION ─── */
+.s-promo{padding:100px 80px;background:linear-gradient(160deg,rgba(249,232,232,.5) 0%,rgba(253,246,240,.9) 40%,rgba(245,240,255,.4) 100%);position:relative;z-index:1;text-align:center}
+.promo-eyebrow{font-family:var(--font-display);font-size:.7rem;letter-spacing:.42em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;justify-content:center;gap:12px}
+.promo-eyebrow::before,.promo-eyebrow::after{content:'✦';font-size:.6rem}
+.promo-title{font-family:var(--font-fairy);font-size:clamp(2.5rem,5vw,4.5rem);color:var(--rose);margin-bottom:16px}
+.promo-sub{font-family:var(--font-display);font-size:1.1rem;color:var(--mid);font-weight:300;margin-bottom:52px;max-width:550px;margin-left:auto;margin-right:auto}
+.promo-video-wrap{position:relative;max-width:800px;margin:0 auto;border-radius:24px;overflow:hidden;box-shadow:0 30px 80px rgba(180,80,100,.2),0 8px 24px rgba(180,80,100,.1);border:1px solid rgba(212,119,138,.15)}
+.promo-video-wrap video{display:block;width:100%;border-radius:24px;background:#f9e8f0}
+.promo-video-placeholder{width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,var(--petal) 0%,var(--dusty) 50%,rgba(197,184,216,.4) 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;cursor:none;position:relative;overflow:hidden}
+.promo-video-placeholder::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4778a' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.promo-play-btn{width:80px;height:80px;background:rgba(255,255,255,.9);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 32px rgba(180,80,100,.25);cursor:none;transition:all .3s;font-size:1.6rem;border:2px solid rgba(212,119,138,.3)}
+.promo-play-btn:hover{transform:scale(1.1);box-shadow:0 12px 40px rgba(180,80,100,.35);background:white}
+.promo-video-placeholder p{font-family:var(--font-display);font-size:1rem;color:var(--mid);font-style:italic}
+.promo-video-placeholder small{font-family:var(--font-display);font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--soft)}
+.promo-corner-orn{position:absolute;font-size:3rem;color:rgba(212,119,138,.12);pointer-events:none}
+.promo-corner-orn.tl{top:24px;left:32px}
+.promo-corner-orn.tr{top:24px;right:32px}
+.promo-corner-orn.bl{bottom:24px;left:32px}
+.promo-corner-orn.br{bottom:24px;right:32px}
+
+/* ─── GALLERY ─── */
+.s-gallery{padding:100px 80px;background:var(--bg);position:relative;z-index:1}
+.s-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:52px;flex-wrap:wrap;gap:20px}
+.section-eyebrow{font-family:var(--font-display);font-size:.7rem;letter-spacing:.42em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.section-eyebrow::before{content:'✿';font-size:.6rem}
+.section-title{font-family:var(--font-display);font-size:clamp(2rem,3.2vw,3rem);font-weight:400;color:var(--dark);line-height:1.1;margin-bottom:8px}
+.section-title em{font-style:italic;color:var(--rose)}
+.fairy-divider{display:flex;align-items:center;gap:16px;margin-bottom:32px}
+.fairy-divider::before,.fairy-divider::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,rgba(212,119,138,.3),transparent)}
+.fairy-divider-icon{color:var(--rose);font-size:1rem;opacity:.7}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.f-btn{font-family:var(--font-display);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--soft);background:rgba(255,255,255,.8);border:1px solid rgba(212,119,138,.2);padding:8px 20px;cursor:none;border-radius:100px;transition:all .25s;backdrop-filter:blur(8px)}
+.f-btn:hover,.f-btn.on{background:linear-gradient(135deg,var(--rose),var(--deep-rose));border-color:transparent;color:#fff;box-shadow:0 4px 18px rgba(180,80,100,.28)}
+.g-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.toy-card{background:#fff;border-radius:20px;overflow:hidden;cursor:none;transition:transform .4s cubic-bezier(.22,.68,0,1.2),box-shadow .4s;border:1px solid rgba(212,119,138,.08);box-shadow:0 4px 20px rgba(180,80,100,.06);position:relative}
+.toy-card:hover{transform:translateY(-8px) rotate(.3deg);box-shadow:0 24px 56px rgba(180,80,100,.14)}
+.toy-card:nth-child(5n+1){grid-row:span 2}
+.card-img{position:relative;overflow:hidden;aspect-ratio:3/4}
+.toy-card:nth-child(5n+1) .card-img{aspect-ratio:3/5}
+.card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.25,.46,.45,.94)}
+.toy-card:hover .card-img img{transform:scale(1.1)}
+.card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(45,26,32,.75) 0%,transparent 55%);opacity:0;transition:opacity .35s;display:flex;align-items:flex-end;padding:18px}
+.toy-card:hover .card-overlay{opacity:1}
+.card-order-btn{width:100%;padding:10px;background:rgba(255,255,255,.96);border:none;border-radius:10px;font-family:var(--font-display);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--rose);cursor:none;transition:background .2s}
+.card-order-btn:hover{background:var(--petal)}
+.card-cat-pill{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-radius:100px;padding:4px 12px;font-family:var(--font-display);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mid);border:1px solid rgba(212,119,138,.2)}
+.card-body{padding:16px 18px 20px}
+.card-name{font-family:var(--font-display);font-size:1.1rem;font-weight:500;color:var(--dark);margin-bottom:3px;line-height:1.3}
+.card-sub{font-family:var(--font-body);font-size:.7rem;color:var(--soft);margin-bottom:7px;font-weight:300}
+.card-price{font-family:var(--font-fairy);font-size:1.3rem;color:var(--rose)}
+
+/* ─── FEATURE BANNER ─── */
+.s-features{background:linear-gradient(135deg,var(--petal) 0%,rgba(249,240,255,.6) 50%,rgba(210,240,210,.3) 100%);padding:72px 80px;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;position:relative;z-index:1;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.feat{padding:44px 36px;text-align:center;background:rgba(255,255,255,.5);backdrop-filter:blur(12px);transition:background .3s}
+.feat:hover{background:rgba(255,255,255,.85)}
+.feat-ico{font-size:2.6rem;display:block;margin-bottom:16px;animation:wiggle 4s ease-in-out infinite}
+@keyframes wiggle{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+.feat:nth-child(2) .feat-ico{animation-delay:.7s}
+.feat:nth-child(3) .feat-ico{animation-delay:1.4s}
+.feat-title{font-family:var(--font-display);font-size:1.3rem;font-weight:500;color:var(--dark);margin-bottom:10px}
+.feat-desc{font-family:var(--font-body);font-size:.82rem;font-weight:300;color:var(--soft);line-height:1.9}
+
+/* ─── ABOUT ─── */
+.s-about{padding:100px 80px;background:radial-gradient(ellipse at 90% 50%,rgba(197,184,216,.2) 0%,transparent 50%),radial-gradient(ellipse at 10% 30%,rgba(249,232,232,.4) 0%,transparent 45%),var(--cream);position:relative;z-index:1}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-img-wrap{position:relative}
+.about-img-wrap>img{width:100%;height:520px;object-fit:cover;border-radius:24px;display:block;box-shadow:0 24px 64px rgba(180,80,100,.16)}
+.about-frame{position:absolute;top:-14px;left:-14px;right:14px;bottom:14px;border:1.5px solid rgba(212,119,138,.2);border-radius:24px;z-index:-1;pointer-events:none}
+.about-dot-tl,.about-dot-tr,.about-dot-bl,.about-dot-br{position:absolute;width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,var(--rose),var(--gold));z-index:2;box-shadow:0 2px 8px rgba(180,80,100,.3)}
+.about-dot-tl{top:-6px;left:-6px}
+.about-dot-tr{top:-6px;right:-6px}
+.about-dot-bl{bottom:-6px;left:-6px}
+.about-dot-br{bottom:-6px;right:-6px}
+.about-sticker{position:absolute;bottom:-32px;right:-32px;background:#fff;padding:22px 26px;border-left:4px solid var(--rose);border-radius:0 16px 16px 0;box-shadow:0 16px 44px rgba(180,80,100,.14);max-width:260px}
+.sticker-text{font-family:var(--font-display);font-style:italic;font-size:1rem;color:var(--dark);line-height:1.5;margin-bottom:8px}
+.sticker-cite{font-family:var(--font-display);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--soft)}
+.about-content p{font-size:.93rem;line-height:2.1;color:var(--mid);margin-bottom:18px;font-weight:300}
+.about-content p strong{color:var(--dark);font-weight:600}
+.master-sig{margin-top:28px;padding-top:24px;border-top:1px solid rgba(212,119,138,.2)}
+.master-name{font-family:var(--font-fairy);font-size:3rem;background:linear-gradient(135deg,var(--rose),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1;margin-bottom:4px}
+.master-role{font-family:var(--font-display);font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--soft)}
+
+/* ─── HOW IT WORKS ─── */
+.s-how{padding:100px 80px;background:linear-gradient(150deg,rgba(249,232,232,.3) 0%,rgba(245,240,255,.3) 50%,rgba(220,240,220,.2) 100%),var(--bg);position:relative;z-index:1}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:60px}
+.step{background:rgba(255,255,255,.75);backdrop-filter:blur(16px);border:1px solid rgba(212,119,138,.1);border-radius:20px;padding:36px 28px;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s}
+.step::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--rose),var(--gold))}
+.step:hover{transform:translateY(-6px);box-shadow:0 18px 50px rgba(180,80,100,.12)}
+.step-num{font-family:var(--font-fairy);font-size:4rem;color:rgba(212,119,138,.18);line-height:1;margin-bottom:14px}
+.step h3{font-family:var(--font-display);font-size:1.2rem;color:var(--rose);margin-bottom:10px;font-weight:500}
+.step p{font-family:var(--font-body);font-size:.8rem;font-weight:300;line-height:1.9;color:var(--mid)}
+
+/* ─── ORDER ─── */
+.s-order{padding:100px 80px;background:var(--bg);position:relative;z-index:1}
+.order-wrap{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+.order-info p{font-size:.93rem;line-height:2;color:var(--mid);margin-bottom:16px;font-weight:300}
+.perks{margin-top:36px;display:flex;flex-direction:column;gap:16px}
+.perk{display:flex;gap:14px;align-items:flex-start}
+.perk-ico{width:44px;height:44px;flex-shrink:0;border-radius:12px;background:linear-gradient(135deg,var(--petal),var(--dusty));border:1px solid rgba(212,119,138,.2);display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+.perk strong{display:block;font-size:.82rem;font-weight:600;color:var(--dark);margin-bottom:2px}
+.perk span{font-family:var(--font-body);font-size:.72rem;font-weight:300;color:var(--soft)}
+.form-card{background:#fff;border-radius:24px;border:1px solid rgba(212,119,138,.12);box-shadow:0 16px 60px rgba(180,80,100,.08);padding:48px;position:relative;overflow:hidden}
+.form-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(to right,var(--rose),var(--gold),var(--lavender))}
+.form-title{font-family:var(--font-fairy);font-size:2.4rem;color:var(--rose);margin-bottom:8px;line-height:1.1}
+.form-sub{font-family:var(--font-display);font-size:.82rem;color:var(--soft);margin-bottom:28px;font-style:italic}
+.fg{margin-bottom:16px}
+.fl{display:block;font-family:var(--font-display);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--soft);margin-bottom:6px}
+.fr2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fi,.fsel,.fta{width:100%;padding:12px 16px;background:var(--bg);border:1.5px solid rgba(212,119,138,.2);border-radius:12px;font-family:var(--font-body);font-size:.88rem;color:var(--dark);outline:none;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none;appearance:none}
+.fi:focus,.fsel:focus,.fta:focus{border-color:var(--rose);box-shadow:0 0 0 3px rgba(212,119,138,.12);background:#fff}
+.fta{height:96px;resize:vertical}
+.file-lbl{width:100%;padding:12px 16px;background:var(--bg);border:2px dashed rgba(212,119,138,.3);border-radius:12px;font-family:var(--font-body);font-size:.8rem;color:var(--soft);cursor:none;display:flex;align-items:center;gap:8px;transition:all .2s}
+.file-lbl:hover{border-color:var(--rose);color:var(--rose)}
+.file-inp{display:none}
+.submit-btn{width:100%;padding:16px;background:linear-gradient(135deg,var(--rose),var(--deep-rose));color:#fff;border:none;border-radius:14px;cursor:none;font-family:var(--font-display);font-size:.78rem;letter-spacing:.24em;text-transform:uppercase;margin-top:8px;box-shadow:0 8px 28px rgba(180,80,100,.3),inset 0 1px 0 rgba(255,255,255,.18);transition:all .3s;position:relative;overflow:hidden}
+.submit-btn:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(180,80,100,.4)}
+
+/* ─── CHAT ─── */
+.s-chat{padding:80px;background:linear-gradient(135deg,var(--cream),var(--petal));display:grid;grid-template-columns:1fr 440px;gap:72px;align-items:center;border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;z-index:1}
+.chat-intro{font-size:.93rem;line-height:2;color:var(--mid);max-width:380px;margin-top:16px;font-weight:300}
+.chat-widget{background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 24px 64px rgba(180,80,100,.12),0 4px 20px rgba(180,80,100,.06);border:1px solid rgba(212,119,138,.1)}
+.chat-hdr{background:linear-gradient(135deg,var(--rose),var(--deep-rose));padding:18px 22px;display:flex;align-items:center;gap:14px}
+.chat-av{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:1.3rem;box-shadow:0 2px 10px rgba(0,0,0,.12)}
+.chat-hname{font-family:var(--font-display);font-size:1.05rem;color:#fff}
+.chat-hstatus{font-family:var(--font-display);font-size:.62rem;color:rgba(255,255,255,.75);margin-top:1px;font-style:italic}
+.chat-msgs{padding:20px;min-height:200px;max-height:260px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;background:linear-gradient(to bottom,#fff,var(--bg))}
+.msg{max-width:82%;padding:10px 14px;font-family:var(--font-body);font-size:.82rem;font-weight:300;line-height:1.65}
+.msg-bot{background:var(--petal);border-radius:4px 16px 16px 16px;color:var(--dark);align-self:flex-start;border:1px solid rgba(212,119,138,.14)}
+.msg-user{background:linear-gradient(135deg,var(--rose),var(--deep-rose));color:#fff;border-radius:16px 4px 16px 16px;align-self:flex-end}
+.chat-inp-row{display:flex;border-top:1px solid var(--border);background:#fff}
+.chat-inp{flex:1;padding:14px 18px;border:none;outline:none;font-family:var(--font-body);font-size:.85rem;color:var(--dark);background:transparent}
+.chat-send{padding:14px 20px;background:var(--rose);border:none;color:#fff;cursor:none;font-size:1.1rem;transition:background .2s;flex-shrink:0}
+.chat-send:hover{background:var(--deep-rose)}
+
+/* ─── CONTACTS ─── */
+.s-contacts{padding:100px 80px;background:radial-gradient(ellipse at 50% 100%,rgba(197,184,216,.2) 0%,transparent 55%),var(--bg);position:relative;z-index:1}
+.contacts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px}
+.contact-card{background:#fff;border-radius:20px;border:1px solid rgba(212,119,138,.1);padding:44px 36px;text-align:center;box-shadow:0 4px 20px rgba(180,80,100,.06);transition:transform .3s,box-shadow .3s;position:relative;overflow:hidden}
+.contact-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--rose),var(--gold));transform:scaleX(0);transition:transform .3s;transform-origin:left}
+.contact-card:hover{transform:translateY(-6px);box-shadow:0 18px 52px rgba(180,80,100,.1)}
+.contact-card:hover::after{transform:scaleX(1)}
+.contact-ico{font-size:2.4rem;display:block;margin-bottom:18px}
+.contact-card h3{font-family:var(--font-display);font-size:1.35rem;font-weight:500;color:var(--dark);margin-bottom:10px}
+.contact-card p{font-family:var(--font-body);font-size:.82rem;font-weight:300;color:var(--soft);line-height:1.8}
+.contact-card a{color:var(--rose);text-decoration:none;font-weight:500}
+.contact-card a:hover{text-decoration:underline}
+
+/* ─── FOOTER ─── */
+footer{background:var(--dark);padding:52px 80px;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1}
+footer::before{content:'';position:absolute;top:0;left:80px;right:80px;height:1px;background:linear-gradient(to right,transparent,rgba(212,119,138,.4),transparent)}
+.foot-fairy{font-family:var(--font-fairy);font-size:2rem;color:var(--rose);letter-spacing:.02em}
+.foot-sub{font-family:var(--font-display);font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-top:4px}
+.foot-copy{font-family:var(--font-display);font-size:.65rem;letter-spacing:.08em;color:rgba(255,255,255,.25)}
+.foot-orn{font-family:var(--font-fairy);font-size:1.4rem;color:rgba(212,119,138,.3)}
+
+/* ─── OVERLAYS ─── */
+.overlay{position:fixed;inset:0;background:rgba(45,26,32,.55);backdrop-filter:blur(10px);z-index:600;display:none;align-items:center;justify-content:center;padding:24px}
+.overlay.open{display:flex}
+.modal-box{background:#fff;border-radius:24px;max-width:520px;width:100%;padding:52px;position:relative;box-shadow:0 40px 100px rgba(80,20,30,.2);border:1px solid rgba(212,119,138,.15);animation:modalPop .4s cubic-bezier(.22,.68,0,1.15);max-height:90vh;overflow-y:auto}
+.modal-box::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(to right,var(--rose),var(--gold),var(--lavender));border-radius:24px 24px 0 0}
+@keyframes modalPop{from{opacity:0;transform:translateY(30px) scale(.95)}to{opacity:1;transform:none}}
+.modal-close{position:absolute;top:18px;right:20px;background:var(--bg);border:1px solid var(--border);width:34px;height:34px;border-radius:50%;cursor:none;font-size:1rem;color:var(--soft);display:flex;align-items:center;justify-content:center;transition:all .2s;line-height:1}
+.modal-close:hover{background:var(--rose);color:#fff;border-color:var(--rose)}
+.modal-title{font-family:var(--font-fairy);font-size:2.4rem;color:var(--rose);margin-bottom:6px;line-height:1.1}
+.modal-sub{font-family:var(--font-display);font-size:.82rem;color:var(--soft);margin-bottom:28px;font-style:italic}
+
+/* ─── TOAST ─── */
+.toast{position:fixed;bottom:36px;right:36px;z-index:900;background:linear-gradient(135deg,var(--sage),#5a8a6a);color:#fff;padding:14px 24px;border-radius:14px;font-family:var(--font-body);font-size:.82rem;box-shadow:0 8px 32px rgba(0,0,0,.14);transform:translateY(80px);opacity:0;transition:all .4s cubic-bezier(.22,.68,0,1.2);pointer-events:none}
+.toast.show{transform:translateY(0);opacity:1}
+
+/* ─── SCROLL REVEAL ─── */
+.sr{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+.sr.in{opacity:1;transform:none}
+.sr2{opacity:0;transform:translateX(-24px);transition:opacity .75s ease,transform .75s ease}
+.sr2.in{opacity:1;transform:none}
+
+/* ══════════════════════════════════════
+   ADMIN PANEL — Visual Editor
+══════════════════════════════════════ */
+#admin-panel{position:fixed;inset:0;z-index:800;background:var(--bg);overflow-y:auto;display:none}
+#admin-panel.open{display:block}
+.adm-topbar{background:var(--dark);height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;position:sticky;top:0;z-index:10;gap:16px}
+.adm-logo{font-family:var(--font-fairy);font-size:1.5rem;color:var(--rose);white-space:nowrap}
+.adm-tabs-wrap{display:flex;gap:4px;background:rgba(255,255,255,.07);border-radius:10px;padding:4px}
+.adm-tab{font-family:var(--font-display);font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5);background:transparent;border:none;padding:7px 16px;cursor:pointer;border-radius:7px;transition:all .2s;white-space:nowrap}
+.adm-tab.on{background:var(--rose);color:#fff;box-shadow:0 3px 12px rgba(180,80,100,.4)}
+.adm-back{font-family:var(--font-display);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.4);background:transparent;border:1px solid rgba(255,255,255,.18);padding:7px 18px;cursor:pointer;border-radius:8px;transition:all .2s;white-space:nowrap;flex-shrink:0}
+.adm-back:hover{border-color:var(--rose);color:var(--rose)}
+.adm-body{display:grid;grid-template-columns:280px 1fr;min-height:calc(100vh - 60px)}
+.adm-sidebar{background:rgba(45,26,32,.04);border-right:1px solid var(--border);padding:28px 24px;overflow-y:auto}
+.adm-content{padding:36px 40px;overflow-y:auto}
+.adm-pane{display:none}
+.adm-pane.on{display:block}
+.adm-section-title{font-family:var(--font-display);font-size:1.5rem;font-weight:500;color:var(--dark);margin-bottom:6px}
+.adm-section-sub{font-family:var(--font-body);font-size:.8rem;color:var(--soft);margin-bottom:32px;font-weight:300}
+
+/* sidebar nav */
+.adm-nav-item{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;cursor:pointer;transition:all .2s;margin-bottom:4px;font-family:var(--font-body);font-size:.8rem;color:var(--mid);font-weight:400}
+.adm-nav-item:hover,.adm-nav-item.active{background:rgba(212,119,138,.1);color:var(--rose)}
+.adm-nav-item .nav-ico{font-size:1rem;width:24px;text-align:center;flex-shrink:0}
+.adm-nav-sep{font-family:var(--font-display);font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;color:var(--soft);padding:14px 14px 6px;opacity:.7}
+
+/* cards */
+.adm-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:20px;box-shadow:0 2px 12px var(--shadow)}
+.adm-card-title{font-family:var(--font-display);font-size:1.05rem;font-weight:500;color:var(--dark);margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.adm-card-title span{font-size:1.1rem}
+.adm-label{display:block;font-family:var(--font-display);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--soft);margin-bottom:6px;margin-top:14px}
+.adm-input,.adm-select,.adm-textarea{width:100%;padding:10px 14px;background:var(--bg);border:1.5px solid rgba(212,119,138,.2);border-radius:10px;font-family:var(--font-body);font-size:.84rem;color:var(--dark);outline:none;transition:border-color .2s;-webkit-appearance:none;appearance:none}
+.adm-input:focus,.adm-select:focus,.adm-textarea:focus{border-color:var(--rose)}
+.adm-textarea{resize:vertical;min-height:80px}
+.adm-row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.adm-btn{padding:10px 22px;background:linear-gradient(135deg,var(--rose),var(--deep-rose));color:#fff;border:none;border-radius:10px;font-family:var(--font-body);font-size:.78rem;cursor:pointer;transition:all .2s;font-weight:500;box-shadow:0 4px 14px rgba(180,80,100,.28)}
+.adm-btn:hover{transform:translateY(-1px);box-shadow:0 7px 20px rgba(180,80,100,.36)}
+.adm-btn-sm{padding:7px 16px;font-size:.72rem;border-radius:8px}
+.adm-btn-outline{background:transparent;border:1.5px solid var(--rose);color:var(--rose);box-shadow:none}
+.adm-btn-outline:hover{background:var(--rose);color:#fff}
+.adm-btn-danger{background:linear-gradient(135deg,#e07070,#c05050)}
+.adm-tip{background:linear-gradient(135deg,#fff9ef,#fdf4ff);border:1px solid rgba(212,169,106,.2);border-left:4px solid var(--gold);border-radius:0 10px 10px 0;padding:14px 18px;margin-top:16px;font-family:var(--font-body);font-size:.78rem;color:var(--mid);line-height:1.75}
+
+/* range slider */
+.adm-range{width:100%;accent-color:var(--rose);margin:8px 0}
+.range-val{font-family:var(--font-display);font-size:.82rem;color:var(--rose);font-weight:500;min-width:40px;text-align:right}
+.range-row{display:flex;align-items:center;gap:10px}
+
+/* color picker */
+.color-row{display:flex;align-items:center;gap:10px;margin-top:8px}
+.color-swatch{width:36px;height:36px;border-radius:8px;border:2px solid rgba(212,119,138,.2);cursor:pointer;transition:transform .2s;flex-shrink:0}
+.color-swatch:hover{transform:scale(1.1)}
+.color-swatch.active{border-color:var(--rose);box-shadow:0 0 0 2px rgba(212,119,138,.3)}
+.color-label{font-family:var(--font-body);font-size:.75rem;color:var(--mid)}
+
+/* font preview */
+.font-option{padding:10px 14px;border:1.5px solid rgba(212,119,138,.2);border-radius:10px;cursor:pointer;margin-bottom:8px;transition:all .2s;display:flex;align-items:center;justify-content:space-between}
+.font-option:hover,.font-option.active{border-color:var(--rose);background:rgba(212,119,138,.06)}
+.font-option-name{font-size:.82rem;color:var(--dark)}
+.font-option-preview{font-size:1.1rem;color:var(--rose)}
+
+/* works grid admin */
+.works-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+.work-card{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;position:relative}
+.work-card img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
+.work-info{padding:10px 12px}
+.work-name{font-size:.8rem;font-weight:600;color:var(--dark);margin-bottom:2px}
+.work-price{font-family:var(--font-fairy);font-size:1rem;color:var(--rose)}
+.work-del{position:absolute;top:8px;right:8px;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.94);border:none;cursor:pointer;font-size:.7rem;color:var(--rose);display:flex;align-items:center;justify-content:center;transition:all .2s;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.work-del:hover{background:var(--rose);color:#fff}
+
+/* orders */
+.ord-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:22px 26px;display:grid;grid-template-columns:1fr auto;gap:14px;align-items:start;margin-bottom:12px;box-shadow:0 2px 10px var(--shadow)}
+.ord-name{font-family:var(--font-display);font-size:1.1rem;font-weight:500;margin-bottom:6px;color:var(--dark)}
+.ord-det{font-family:var(--font-body);font-size:.79rem;color:var(--soft);line-height:1.75;font-weight:300}
+.ord-badge{padding:5px 14px;font-family:var(--font-body);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;border-radius:100px;font-weight:500;flex-shrink:0}
+.b-new{background:#fce4dc;color:var(--rose)}
+.b-done{background:#dff0df;color:var(--sage)}
+.ord-done-btn{margin-top:10px;padding:6px 14px;background:transparent;border:1px solid var(--border);font-family:var(--font-body);font-size:.65rem;cursor:pointer;color:var(--soft);border-radius:8px;transition:all .2s;font-weight:400}
+.ord-done-btn:hover{border-color:var(--sage);color:var(--sage)}
+
+/* video upload section in admin */
+.video-upload-zone{border:2.5px dashed rgba(212,119,138,.35);border-radius:16px;padding:48px 32px;text-align:center;cursor:pointer;transition:all .2s;background:rgba(249,232,232,.2);margin-bottom:20px}
+.video-upload-zone:hover{border-color:var(--rose);background:rgba(249,232,232,.4)}
+.video-upload-zone .upload-ico{font-size:3rem;display:block;margin-bottom:14px}
+.video-upload-zone p{font-family:var(--font-display);font-size:1rem;color:var(--mid);margin-bottom:6px;font-style:italic}
+.video-upload-zone small{font-family:var(--font-body);font-size:.74rem;color:var(--soft);font-weight:300}
+.video-list{margin-top:16px}
+.video-item{display:flex;align-items:center;gap:14px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:12px;margin-bottom:10px}
+.video-thumb{width:56px;height:56px;border-radius:8px;background:var(--petal);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+.video-info{flex:1}
+.video-info .v-name{font-size:.82rem;font-weight:600;color:var(--dark);margin-bottom:2px}
+.video-info .v-type{font-size:.7rem;color:var(--soft);font-weight:300}
+.video-actions{display:flex;gap:8px}
+
+/* image upload zone */
+.img-upload-zone{border:2px dashed rgba(212,119,138,.3);border-radius:12px;padding:28px;text-align:center;cursor:pointer;transition:all .2s;background:rgba(249,232,232,.15);margin-bottom:16px;position:relative}
+.img-upload-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.img-upload-zone:hover{border-color:var(--rose);background:rgba(249,232,232,.3)}
+.img-upload-zone p{font-family:var(--font-display);font-size:.9rem;color:var(--soft);font-style:italic}
+.img-preview-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
+.img-preview-item{position:relative;aspect-ratio:1;border-radius:10px;overflow:hidden;border:1px solid var(--border)}
+.img-preview-item img{width:100%;height:100%;object-fit:cover;display:block}
+.img-preview-del{position:absolute;top:5px;right:5px;width:22px;height:22px;background:rgba(255,255,255,.9);border:none;border-radius:50%;cursor:pointer;font-size:.65rem;color:var(--rose);display:flex;align-items:center;justify-content:center;transition:all .15s}
+.img-preview-del:hover{background:var(--rose);color:#fff}
+
+/* live site editor toggle */
+.live-edit-badge{position:fixed;bottom:36px;left:36px;z-index:850;background:linear-gradient(135deg,var(--rose),var(--deep-rose));color:#fff;padding:10px 18px;border-radius:100px;font-family:var(--font-body);font-size:.75rem;font-weight:600;box-shadow:0 6px 24px rgba(180,80,100,.35);cursor:none;display:none;align-items:center;gap:8px;transition:all .3s}
+.live-edit-badge.visible{display:flex}
+.live-edit-dot{width:8px;height:8px;border-radius:50%;background:#fff;animation:blink 1.5s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:.4}50%{opacity:1}}
+
+/* editable highlight */
+[data-editable]{outline:none;transition:box-shadow .2s}
+[data-editable].editing{box-shadow:0 0 0 2px var(--rose),0 0 0 4px rgba(212,119,138,.2);border-radius:4px}
+body.edit-mode [data-editable]:hover{box-shadow:0 0 0 2px rgba(212,119,138,.5);border-radius:4px;cursor:text}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:1100px){
+  .site-header{padding:0 32px}
+  .hero{grid-template-columns:1fr}
+  .hero-right{height:65vh}
+  .s-gallery,.s-about,.s-how,.s-order,.s-contacts,.s-promo{padding:72px 40px}
+  .s-chat{padding:60px 40px;grid-template-columns:1fr}
+  .about-grid,.order-wrap,.s-features{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .g-grid{grid-template-columns:repeat(3,1fr)}
+  .works-grid{grid-template-columns:repeat(3,1fr)}
+  .adm-body{grid-template-columns:220px 1fr}
+  footer{flex-direction:column;gap:12px;text-align:center;padding:36px 40px}
+  footer::before{left:40px;right:40px}
+}
+@media(max-width:700px){
+  .nav{display:none}
+  .site-header{padding:0 20px}
+  .s-gallery,.s-about,.s-how,.s-order,.s-contacts,.s-promo{padding:56px 20px}
+  .s-chat{padding:48px 20px}
+  .s-features{padding:48px 20px}
+  .hero-left{padding:56px 20px}
+  .steps,.contacts-grid{grid-template-columns:1fr}
+  .g-grid{grid-template-columns:repeat(2,1fr)}
+  .toy-card:nth-child(5n+1){grid-row:span 1}
+  .toy-card:nth-child(5n+1) .card-img{aspect-ratio:3/4}
+  .fr2,.adm-row2{grid-template-columns:1fr}
+  .works-grid{grid-template-columns:repeat(2,1fr)}
+  .adm-body{grid-template-columns:1fr}
+  .adm-sidebar{display:none}
+  footer{padding:28px 20px}
+  .band{display:none}
+  .cursor-dot,.cursor-ring{display:none}
+}
+
+/* ─── LIGHTBOX ─── */
+#lightbox{position:fixed;inset:0;background:rgba(20,8,12,.94);z-index:1000;display:none;align-items:center;justify-content:center;padding:20px}
+#lightbox.open{display:flex}
+.lb-img{max-width:90vw;max-height:88vh;object-fit:contain;border-radius:12px;box-shadow:0 0 80px rgba(0,0,0,.6);animation:lbIn .3s ease}
+@keyframes lbIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:none}}
+.lb-close{position:fixed;top:24px;right:28px;font-size:2rem;color:rgba(255,255,255,.7);cursor:none;background:none;border:none;line-height:1;transition:color .2s;z-index:2}
+.lb-close:hover{color:#fff}
+.lb-prev,.lb-next{position:fixed;top:50%;transform:translateY(-50%);font-size:2.4rem;color:rgba(255,255,255,.55);background:rgba(255,255,255,.07);border:none;cursor:none;width:56px;height:80px;display:flex;align-items:center;justify-content:center;border-radius:10px;transition:all .25s;z-index:2}
+.lb-prev{left:16px}.lb-next{right:16px}
+.lb-prev:hover,.lb-next:hover{color:#fff;background:rgba(212,119,138,.4)}
+.lb-caption{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.8);font-family:var(--font-display);font-size:1rem;letter-spacing:.06em;font-style:italic;text-align:center;pointer-events:none}
+.lb-counter{position:fixed;top:26px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.45);font-family:var(--font-display);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase}
+
+/* ─── CARD STATUS BADGE ─── */
+.card-status{position:absolute;top:12px;right:12px;padding:4px 10px;border-radius:100px;font-family:var(--font-body);font-size:.6rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;z-index:3}
+.status-avail{background:rgba(154,184,154,.92);color:#fff}
+.status-order{background:rgba(212,169,106,.92);color:#fff}
+.status-sold{background:rgba(180,80,100,.85);color:#fff}
+
+/* ─── REVIEWS SECTION ─── */
+.s-reviews{padding:100px 80px;background:linear-gradient(150deg,rgba(249,232,232,.4) 0%,rgba(245,240,255,.3) 60%,rgba(210,240,210,.15) 100%),var(--cream);position:relative;z-index:1}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px}
+.review-card{background:#fff;border-radius:20px;border:1px solid rgba(212,119,138,.1);padding:32px 28px;box-shadow:0 4px 20px rgba(180,80,100,.06);position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s}
+.review-card::before{content:'\201C';font-family:var(--font-fairy);font-size:5rem;color:rgba(212,119,138,.12);position:absolute;top:-8px;left:14px;line-height:1;pointer-events:none}
+.review-card:hover{transform:translateY(-5px);box-shadow:0 16px 48px rgba(180,80,100,.1)}
+.review-stars{color:var(--gold);font-size:1rem;letter-spacing:.12em;margin-bottom:14px}
+.review-text{font-family:var(--font-display);font-style:italic;font-size:1rem;color:var(--dark);line-height:1.75;margin-bottom:18px}
+.review-author{display:flex;align-items:center;gap:12px}
+.review-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--rose),var(--gold));display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;font-family:var(--font-display);color:#fff;font-weight:500}
+.review-name{font-family:var(--font-display);font-size:.88rem;font-weight:500;color:var(--dark)}
+.review-city{font-family:var(--font-body);font-size:.7rem;color:var(--soft);font-weight:300}
+
+/* ─── FLOATING CTA ─── */
+.float-cta{position:fixed;bottom:32px;right:32px;z-index:700;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.float-main-btn{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--rose),var(--deep-rose));border:none;cursor:none;color:#fff;font-size:1.5rem;box-shadow:0 6px 24px rgba(180,80,100,.4);transition:all .3s;display:flex;align-items:center;justify-content:center;animation:floatPulse 3s ease-in-out infinite}
+@keyframes floatPulse{0%,100%{box-shadow:0 6px 24px rgba(180,80,100,.4)}50%{box-shadow:0 8px 32px rgba(180,80,100,.6),0 0 0 8px rgba(212,119,138,.12)}}
+.float-main-btn:hover{transform:scale(1.1) rotate(15deg)}
+.float-sub-btns{display:flex;flex-direction:column;align-items:flex-end;gap:8px;opacity:0;transform:translateY(10px);pointer-events:none;transition:all .3s}
+.float-sub-btns.open{opacity:1;transform:none;pointer-events:auto}
+.float-sub-btn{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid rgba(212,119,138,.2);border-radius:100px;padding:9px 18px 9px 14px;cursor:none;text-decoration:none;box-shadow:0 4px 16px rgba(180,80,100,.12);transition:all .2s;font-family:var(--font-display);font-size:.8rem;color:var(--dark);white-space:nowrap}
+.float-sub-btn:hover{background:var(--rose);color:#fff;border-color:var(--rose);transform:translateX(-4px)}
+.float-sub-btn .sub-ico{font-size:1.1rem}
+
+/* ─── GALLERY SEARCH ─── */
+.gallery-search-wrap{position:relative;max-width:320px}
+.gallery-search{width:100%;padding:10px 16px 10px 40px;background:rgba(255,255,255,.9);border:1.5px solid rgba(212,119,138,.22);border-radius:100px;font-family:var(--font-body);font-size:.84rem;color:var(--dark);outline:none;transition:border-color .2s,box-shadow .2s}
+.gallery-search:focus{border-color:var(--rose);box-shadow:0 0 0 3px rgba(212,119,138,.12)}
+.gallery-search-ico{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--soft);font-size:.9rem;pointer-events:none}
+
+/* ─── DASHBOARD ─── */
+.dashboard{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px}
+.dash-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:20px 22px;text-align:center;box-shadow:0 2px 10px var(--shadow)}
+.dash-n{font-family:var(--font-fairy);font-size:2.8rem;color:var(--rose);line-height:1;display:block}
+.dash-l{font-family:var(--font-display);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--soft);margin-top:4px;display:block}
+
+/* ─── ORDERS FILTERS ─── */
+.ord-filters{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+.ord-f-btn{font-family:var(--font-display);font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;padding:7px 18px;border:1.5px solid rgba(212,119,138,.25);border-radius:100px;background:transparent;cursor:pointer;color:var(--mid);transition:all .2s}
+.ord-f-btn.on,.ord-f-btn:hover{background:linear-gradient(135deg,var(--rose),var(--deep-rose));border-color:transparent;color:#fff}
+.ord-actions{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap}
+
+/* ─── REVIEWS ADMIN ─── */
+.review-adm-card{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start;background:#fff;border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:10px}
+.review-adm-stars{color:var(--gold);font-size:.85rem;margin-bottom:4px}
+.review-adm-text{font-size:.8rem;color:var(--mid);line-height:1.6;font-weight:300}
+
+/* ─── RESPONSIVE ADDITIONS ─── */
+@media(max-width:1100px){
+  .reviews-grid{grid-template-columns:1fr 1fr}
+  .dashboard{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:700px){
+  .s-reviews{padding:56px 20px}
+  .reviews-grid{grid-template-columns:1fr}
+  .dashboard{grid-template-columns:repeat(2,1fr)}
+  .float-cta{bottom:20px;right:20px}
+}
+
+/* ─── DOWNLOAD BUTTON IN TOPBAR ─── */
+.adm-download-btn{display:flex;align-items:center;gap:8px;background:linear-gradient(135deg,#2ecc71,#27ae60);color:#fff;border:none;padding:9px 22px;border-radius:30px;font-family:var(--font-display);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:all .3s;box-shadow:0 4px 16px rgba(39,174,96,.3);white-space:nowrap;flex-shrink:0}
+.adm-download-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(39,174,96,.45)}
+.adm-download-btn .dl-ico{font-size:1rem}
+
+/* ─── EDIT CARD MODAL ─── */
+#edit-modal{position:fixed;inset:0;background:rgba(20,8,12,.7);z-index:1100;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(6px)}
+#edit-modal.open{display:flex}
+.edit-modal-box{background:#fff;border-radius:24px;padding:40px;width:100%;max-width:560px;max-height:92vh;overflow-y:auto;box-shadow:0 24px 80px rgba(0,0,0,.3);position:relative;animation:lbIn .25s ease}
+.edit-modal-title{font-family:var(--font-display);font-size:1.6rem;font-weight:500;color:var(--dark);margin-bottom:6px}
+.edit-modal-sub{font-family:var(--font-body);font-size:.78rem;color:var(--soft);margin-bottom:28px;font-weight:300}
+.edit-modal-close{position:absolute;top:18px;right:20px;font-size:1.8rem;color:var(--soft);background:none;border:none;cursor:pointer;line-height:1;transition:color .2s}
+.edit-modal-close:hover{color:var(--rose)}
+.edit-preview-img{width:100%;height:180px;object-fit:cover;border-radius:12px;margin-bottom:20px;background:var(--petal)}
+
+/* ─── WORK CARD EDIT BUTTON ─── */
+.work-edit{position:absolute;top:8px;left:8px;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.9);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.75rem;box-shadow:0 2px 8px rgba(0,0,0,.15);transition:all .2s;z-index:2}
+.work-edit:hover{background:var(--gold);color:#fff;transform:scale(1.1)}
+
+/* ─── DOWNLOAD PROGRESS ─── */
+.dl-progress{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;border-radius:20px;padding:40px 56px;box-shadow:0 20px 60px rgba(0,0,0,.2);z-index:2000;text-align:center;display:none;font-family:var(--font-display)}
+.dl-progress.show{display:block}
+.dl-progress-ico{font-size:3rem;margin-bottom:14px;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.dl-progress-text{font-size:1rem;color:var(--dark);font-style:italic}
+</style>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor-dot" id="cDot"></div>
+<div class="cursor-ring" id="cRing"></div>
+
+<!-- PETALS -->
+<div id="petals"></div>
+
+<!-- HEADER -->
+<header class="site-header" id="hdr">
+  <a href="#" class="logo-wrap">
+    <span class="logo-fairy" data-editable id="site-logo-name">Мастерская Чудес</span>
+    <span class="logo-sub" data-editable id="site-logo-sub">Авторские игрушки · Мари</span>
+  </a>
+  <ul class="nav">
+    <li><a href="#gallery">Коллекция</a></li>
+    <li><a href="#promo">Видео</a></li>
+    <li><a href="#about">О Мари</a></li>
+    <li><a href="#order">Заказать</a></li>
+    <li><a href="#contacts">Контакты</a></li>
+  </ul>
+  <a href="#order" class="hdr-btn">Сделать заказ</a>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-left">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      <span class="badge-text" data-editable id="hero-badge">Принимаю заказы · Ручная работа</span>
+    </div>
+    <div class="hero-fairy-title" data-editable id="hero-fairy">Мастерская Чудес</div>
+    <h1 class="hero-main-title">Каждая игрушка —<br><em data-editable id="hero-em">маленькое волшебство</em></h1>
+    <p class="hero-desc" data-editable id="hero-desc">Создаю авторских кукол, сказочных персонажей и мягкие игрушки. Каждое изделие — уникально, сшито вручную с любовью и вниманием к каждой детали.</p>
+    <div class="hero-btns">
+      <a href="#gallery" class="btn-fairy">Смотреть коллекцию ✦</a>
+      <a href="#order" class="btn-outline">Заказать свою ✿</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-n" data-editable id="stat1n">200+</div><div class="stat-l" data-editable id="stat1l">Игрушек создано</div></div>
+      <div class="stat"><div class="stat-n" data-editable id="stat2n">5+</div><div class="stat-l" data-editable id="stat2l">Лет мастерства</div></div>
+      <div class="stat"><div class="stat-n" data-editable id="stat3n">100%</div><div class="stat-l" data-editable id="stat3l">Ручная работа</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-mosaic">
+      <div class="hm-cell"><img src="IMG_3572.jpeg" alt="Кукла" id="hero-img1"></div>
+      <div class="hm-cell"><img src="IMG_3566.jpeg" alt="Ворона" id="hero-img2"></div>
+      <div class="hm-cell"><img src="IMG_3563.jpeg" alt="Домовой" id="hero-img3"></div>
+    </div>
+    <div class="hero-float-card">
+      <div class="float-quote" id="hq" data-editable>"Шью с любовью — для вас"</div>
+      <div class="float-auth" id="hm" data-editable>— Мари, мастер</div>
+    </div>
+  </div>
+</section>
+
+<!-- BAND -->
+<div class="band">
+  <div class="band-track" id="band-track"></div>
+</div>
+
+<!-- PROMO VIDEO -->
+<section class="s-promo" id="promo">
+  <div class="promo-eyebrow">Промо-ролик</div>
+  <div class="promo-title" data-editable id="promo-title">Смотрите, как рождается магия</div>
+  <p class="promo-sub" data-editable id="promo-sub">Короткий ролик о том, как создаются авторские игрушки в Мастерской Чудес — с любовью и вниманием к каждой детали</p>
+  <div class="promo-video-wrap sr">
+    <div class="promo-corner-orn tl">✿</div>
+    <div class="promo-corner-orn tr">✦</div>
+    <div class="promo-corner-orn bl">❀</div>
+    <div class="promo-corner-orn br">✿</div>
+    <div id="promo-video-container">
+      <div class="promo-video-placeholder" id="promo-placeholder">
+        <div class="promo-play-btn">▶</div>
+        <p>Промо-видео Мастерской Чудес</p>
+        <small>Загрузите видео через Панель Мастера</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="s-gallery" id="gallery">
+  <div class="s-head sr">
+    <div>
+      <div class="section-eyebrow">Коллекция</div>
+      <h2 class="section-title">Мои <em>работы</em></h2>
+    </div>
+    <div class="filters">
+      <button class="f-btn on" data-f="all">Все работы</button>
+      <button class="f-btn" data-f="dolls">Куклы</button>
+      <button class="f-btn" data-f="folk">Народные</button>
+      <button class="f-btn" data-f="birds">Птицы</button>
+      <button class="f-btn" data-f="characters">Персонажи</button>
+      <button class="f-btn" data-f="animals">Зверята</button>
+    </div>
+  </div>
+  <div class="g-grid" id="g-grid"></div>
+</section>
+
+<!-- FEATURES -->
+<div class="s-features sr">
+  <div class="feat"><span class="feat-ico">🧵</span><div class="feat-title">Ручная работа</div><div class="feat-desc">Каждый стежок — с любовью. Никаких фабричных изделий, только живое мастерство.</div></div>
+  <div class="feat"><span class="feat-ico">✨</span><div class="feat-title">Уникальные персонажи</div><div class="feat-desc">Создам любого сказочного героя по вашему описанию, рисунку или фото.</div></div>
+  <div class="feat"><span class="feat-ico">🎁</span><div class="feat-title">Доставка по России</div><div class="feat-desc">Красивая подарочная упаковка и бережная отправка в любой уголок страны.</div></div>
+</div>
+
+<!-- ABOUT -->
+<section class="s-about" id="about">
+  <div class="about-grid">
+    <div class="about-img-wrap sr2">
+      <div class="about-frame"></div>
+      <div class="about-dot-tl"></div><div class="about-dot-tr"></div>
+      <div class="about-dot-bl"></div><div class="about-dot-br"></div>
+      <img src="IMG_3567.jpeg" alt="Мари — мастер" id="about-photo">
+      <div class="about-sticker">
+        <div class="sticker-text" id="aq" data-editable>"Вкладываю частичку сказки в каждую игрушку"</div>
+        <div class="sticker-cite" id="ac" data-editable>— Мари</div>
+      </div>
+    </div>
+    <div class="sr">
+      <div class="section-eyebrow">О мастере</div>
+      <h2 class="section-title">Создаю <em>сказку</em><br>своими руками</h2>
+      <div class="fairy-divider"><span class="fairy-divider-icon">✿</span></div>
+      <div class="about-content">
+        <p id="ap1" data-editable>Меня зовут <strong>Мари</strong>, и я создаю авторские игрушки ручной работы. Каждый персонаж — это маленькая история, придуманная специально для вас.</p>
+        <p id="ap2" data-editable>В моей мастерской живут Бабы-Яги с характером, добрые домовые, весёлые вороны, нежные куколки и народные обереги. Все шьются вручную из качественных тканей с любовью.</p>
+        <p id="ap3" data-editable>Принимаю индивидуальные заказы — создам любого персонажа по вашему описанию или рисунку. Ваша игрушка будет единственной в мире.</p>
+      </div>
+      <div class="master-sig">
+        <div class="master-name" id="mn" data-editable>Мари</div>
+        <div class="master-role" id="mr" data-editable>Мастер · Мастерская Чудес</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="s-how">
+  <div class="section-eyebrow">Как это работает</div>
+  <h2 class="section-title">От мечты до <em>готовой игрушки</em></h2>
+  <div class="steps">
+    <div class="step sr"><div class="step-num">01</div><h3>Напишите мне</h3><p>Опишите персонажа через форму или в чате. Прикрепите референсы — фото, рисунки, любые идеи.</p></div>
+    <div class="step sr"><div class="step-num">02</div><h3>Обсудим детали</h3><p>Я свяжусь с вами — уточним цвет, размер, особые пожелания. Согласуем стоимость и сроки.</p></div>
+    <div class="step sr"><div class="step-num">03</div><h3>Создаю с душой</h3><p>Шью вручную с вниманием к каждой детали. По желанию присылаю фото в процессе.</p></div>
+    <div class="step sr"><div class="step-num">04</div><h3>Отправляю к вам</h3><p>Красиво упаковываю в подарочную коробку и отправляю по России. Почта, СДЭК или самовывоз.</p></div>
+  </div>
+</section>
+
+<!-- ORDER -->
+<section class="s-order" id="order">
+  <div class="order-wrap">
+    <div class="order-info sr2">
+      <div class="section-eyebrow">Заказать</div>
+      <h2 class="section-title">Хотите свою <em>особенную</em> игрушку?</h2>
+      <div class="fairy-divider"><span class="fairy-divider-icon">✦</span></div>
+      <p>Создам любого персонажа по вашим пожеланиям. Можно заказать что-то из коллекции или придумать совершенно нового сказочного героя — только для вас.</p>
+      <div class="perks">
+        <div class="perk"><div class="perk-ico">✿</div><div><strong>Индивидуальный заказ</strong><span>Любой персонаж по описанию, рисунку или фото</span></div></div>
+        <div class="perk"><div class="perk-ico">📎</div><div><strong>Референсы приветствуются</strong><span>Прикрепите фото, рисунок или ссылку на вдохновение</span></div></div>
+        <div class="perk"><div class="perk-ico">🎁</div><div><strong>Подарочная упаковка</strong><span>Красиво оформлю для любого особого случая</span></div></div>
+        <div class="perk"><div class="perk-ico">✉️</div><div><strong>Доставка по России</strong><span>Почта России, СДЭК или самовывоз — удобно вам</span></div></div>
+      </div>
+    </div>
+    <div class="form-card sr">
+      <div class="form-title">Оставить заявку</div>
+      <div class="form-sub">Опишите вашу мечту — я воплощу её в жизнь ✿</div>
+      <form id="orderForm" onsubmit="submitOrder(event)">
+        <div class="fr2">
+          <div class="fg"><label class="fl">Имя *</label><input class="fi" type="text" id="fn" placeholder="Ваше имя" required></div>
+          <div class="fg"><label class="fl">Telegram / Телефон</label><input class="fi" type="text" id="fp" placeholder="+7 или @ник"></div>
+        </div>
+        <div class="fg"><label class="fl">Email</label><input class="fi" type="email" id="fe" placeholder="email@mail.ru"></div>
+        <div class="fg"><label class="fl">Что хотите заказать *</label>
+          <select class="fsel" id="ft" required>
+            <option value="">— Выберите тип —</option>
+            <option>Кукла авторская</option><option>Кукла-оберег (народная)</option>
+            <option>Баба-Яга</option><option>Домовой / Банник</option>
+            <option>Ворона / птица</option><option>Зайка / кролик</option>
+            <option>Кот / животное</option><option>Персонаж из сказки</option>
+            <option>Мой персонаж (опишу)</option>
+          </select>
+        </div>
+        <div class="fg"><label class="fl">Пожелания и описание</label>
+          <textarea class="fta" id="fc" placeholder="Опишите персонажа: цвет, размер, характер..."></textarea></div>
+        <div class="fg"><label class="fl">Референс (фото / рисунок)</label>
+          <label class="file-lbl" id="file-lbl">
+            <input type="file" class="file-inp" id="ff" accept="image/*" onchange="onFileChange(this)">
+            📎 &nbsp;Прикрепить изображение
+          </label>
+        </div>
+        <button type="submit" class="submit-btn">Отправить заявку ✿</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- CHAT -->
+<div class="s-chat" id="chat">
+  <div class="sr">
+    <div class="section-eyebrow">Написать Мари</div>
+    <h2 class="section-title">Есть вопросы?<br><em>Напишите</em> здесь</h2>
+    <p class="chat-intro" id="chat-intro" data-editable>Хочется узнать о наличии, уточнить цену или просто поговорить о будущей игрушке — я всегда рада! Пишите прямо здесь или в Telegram ✿</p>
+  </div>
+  <div class="chat-widget">
+    <div class="chat-hdr">
+      <div class="chat-av">🧵</div>
+      <div>
+        <div class="chat-hname">Мари · Мастерская Чудес</div>
+        <div class="chat-hstatus">✿ Обычно отвечаю в течение часа</div>
+      </div>
+    </div>
+    <div class="chat-msgs" id="chat-msgs">
+      <div class="msg msg-bot">Привет! Добро пожаловать в Мастерскую Чудес ✿</div>
+      <div class="msg msg-bot">Расскажите, какую игрушку вы хотите — я помогу создать что-то особенное 🌸</div>
+    </div>
+    <div class="chat-inp-row">
+      <input type="text" class="chat-inp" id="ci" placeholder="Напишите сообщение..." onkeydown="if(event.key==='Enter')chatSend()">
+      <button class="chat-send" onclick="chatSend()">→</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- REVIEWS -->
+<section class="s-reviews" id="reviews">
+  <div class="sr" style="text-align:center">
+    <div class="section-eyebrow">Отзывы</div>
+    <h2 class="section-title">Что говорят <em>покупатели</em></h2>
+  </div>
+  <div class="reviews-grid" id="reviews-grid"></div>
+</section>
+
+<!-- FLOATING CTA -->
+<div class="float-cta" id="floatCta">
+  <div class="float-sub-btns" id="floatSubs">
+    <a href="#order" class="float-sub-btn" onclick="closeFloat()"><span class="sub-ico">✿</span>Оставить заявку</a>
+    <a href="https://t.me/mari_toys" class="float-sub-btn" target="_blank" id="float-tg-btn"><span class="sub-ico">📱</span>Написать в Telegram</a>
+  </div>
+  <button class="float-main-btn" id="floatBtn" onclick="toggleFloat()">✿</button>
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <button class="lb-close" onclick="closeLB()">×</button>
+  <button class="lb-prev" onclick="lbNav(-1)">‹</button>
+  <img class="lb-img" id="lb-img" src="" alt="">
+  <button class="lb-next" onclick="lbNav(1)">›</button>
+  <div class="lb-caption" id="lb-cap"></div>
+  <div class="lb-counter" id="lb-counter"></div>
+</div>
+
+<!-- CONTACTS -->
+<section class="s-contacts" id="contacts">
+  <div class="section-eyebrow">Контакты</div>
+  <h2 class="section-title">Найти <em>Мари</em></h2>
+  <div class="contacts-grid">
+    <div class="contact-card sr"><span class="contact-ico">📱</span><h3>Telegram</h3><p><a href="https://t.me/mari_toys" id="ctg" target="_blank">@mari_toys</a><br>Пишите — отвечаю быстро!</p></div>
+    <div class="contact-card sr"><span class="contact-ico">📸</span><h3>Instagram / VK</h3><p><a href="#" id="cso">@masterskaya_chudes</a><br>Новые работы и процесс создания</p></div>
+    <div class="contact-card sr"><span class="contact-ico">✉️</span><h3>Email</h3><p><a href="/cdn-cgi/l/email-protection#3a575b48537a575b494e5f4849515b435b14484f" id="cem"><span class="__cf_email__" data-cfemail="92fff3e0fbd2fff3e1e6f7e0e1f9f3ebf3bce0e7">[email&#160;protected]</span></a><br>Для подробных запросов</p></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="foot-fairy" data-editable id="foot-name">Мастерская Чудес</div>
+    <div class="foot-sub">Авторские игрушки ручной работы</div>
+  </div>
+  <div class="foot-orn">✦ ✿ ✦</div>
+  <div class="foot-copy" id="fcopy">© 2025 · Мари · Все права защищены</div>
+</footer>
+
+<!-- ORDER MODAL -->
+<div class="overlay" id="ovr-order">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeOvr('ovr-order')">×</button>
+    <div class="modal-title">Заказать игрушку</div>
+    <div class="modal-sub" id="ovr-sub">Заполните форму — и я свяжусь с вами</div>
+    <div class="fg"><label class="fl">Имя *</label><input class="fi" type="text" id="mon" placeholder="Ваше имя"></div>
+    <div class="fg"><label class="fl">Telegram / Телефон *</label><input class="fi" type="text" id="moc" placeholder="+7 или @ник"></div>
+    <div class="fg"><label class="fl">Пожелания</label><textarea class="fta" id="mom" placeholder="Опишите желаемую игрушку..."></textarea></div>
+    <button class="submit-btn" onclick="submitMO()">Отправить заявку ✿</button>
+  </div>
+</div>
+
+<!-- ADMIN LOGIN MODAL -->
+<div class="overlay" id="ovr-login">
+  <div class="modal-box" style="max-width:380px">
+    <button class="modal-close" onclick="closeOvr('ovr-login')">×</button>
+    <div class="modal-title">Вход для мастера</div>
+    <div class="modal-sub">Введите секретный пароль</div>
+    <div class="fg">
+      <label class="fl">Пароль</label>
+      <input class="fi" type="password" id="apw" placeholder="••••••••" onkeydown="if(event.key==='Enter')tryLogin()">
+    </div>
+    <div id="aerr" style="font-size:.74rem;color:var(--rose);margin-bottom:12px;display:none">Неверный пароль. Попробуйте ещё раз.</div>
+    <button class="submit-btn" onclick="tryLogin()">Войти →</button>
+    <div class="adm-tip" style="margin-top:18px">Пароль по умолчанию: <strong>mari2025</strong><br>Смените в разделе «Настройки».</div>
+  </div>
+</div>
+<!-- ADMIN PANEL -->
+<div id="admin-panel">
+  <nav class="adm-topbar">
+    <div class="adm-logo">✿ Панель Мастера</div>
+    <div class="adm-tabs-wrap">
+      <button class="adm-tab on" onclick="admTab(0)">Заявки</button>
+      <button class="adm-tab" onclick="admTab(1)">Галерея</button>
+      <button class="adm-tab" onclick="admTab(2)">Видео</button>
+      <button class="adm-tab" onclick="admTab(3)">Фото</button>
+      <button class="adm-tab" onclick="admTab(4)">Дизайн</button>
+      <button class="adm-tab" onclick="admTab(5)">Текст</button>
+      <button class="adm-tab" onclick="admTab(6)">Настройки</button>
+      <button class="adm-tab" onclick="admTab(7)">Отзывы</button>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;flex-shrink:0">
+      <button class="adm-download-btn" onclick="downloadSite()"><span class="dl-ico">⬇</span>Скачать сайт</button>
+      <button class="adm-back" onclick="closeAdm()">← На сайт</button>
+    </div>
+  </nav>
+
+  <div class="adm-body">
+    <div class="adm-sidebar">
+      <div class="adm-nav-sep">Управление</div>
+      <div class="adm-nav-item active" onclick="admTab(0);setNavActive(this)"><span class="nav-ico">✉</span>Заявки</div>
+      <div class="adm-nav-item" onclick="admTab(1);setNavActive(this)"><span class="nav-ico">🖼</span>Галерея</div>
+      <div class="adm-nav-item" onclick="admTab(2);setNavActive(this)"><span class="nav-ico">🎬</span>Промо-видео</div>
+      <div class="adm-nav-item" onclick="admTab(3);setNavActive(this)"><span class="nav-ico">📷</span>Фото сайта</div>
+      <div class="adm-nav-sep">Дизайн</div>
+      <div class="adm-nav-item" onclick="admTab(4);setNavActive(this)"><span class="nav-ico">🎨</span>Цвета и шрифты</div>
+      <div class="adm-nav-item" onclick="admTab(5);setNavActive(this)"><span class="nav-ico">✏️</span>Тексты сайта</div>
+      <div class="adm-nav-sep">Система</div>
+      <div class="adm-nav-item" onclick="admTab(6);setNavActive(this)"><span class="nav-ico">⚙</span>Настройки</div>
+      <div class="adm-nav-item" onclick="toggleLiveEdit()"><span class="nav-ico">👁</span>Ред. на сайте</div>
+      <div class="adm-nav-item" onclick="admTab(7);setNavActive(this)"><span class="nav-ico">⭐</span>Отзывы</div>
+    </div>
+
+    <div class="adm-content">
+
+      <!-- TAB 0: ORDERS -->
+      <div class="adm-pane on" id="ap0">
+        <div class="adm-section-title">✉ Заявки на заказ</div>
+        <div class="adm-section-sub">Все заявки, поступившие через форму на сайте</div>
+        <div class="dashboard" id="dashboard">
+          <div class="dash-card"><span class="dash-n" id="dash-new">0</span><span class="dash-l">Новых заявок</span></div>
+          <div class="dash-card"><span class="dash-n" id="dash-total">0</span><span class="dash-l">Всего заявок</span></div>
+          <div class="dash-card"><span class="dash-n" id="dash-works">0</span><span class="dash-l">Работ в галерее</span></div>
+          <div class="dash-card"><span class="dash-n" id="dash-avail">0</span><span class="dash-l">В наличии</span></div>
+        </div>
+        <div class="ord-actions">
+          <div class="ord-filters">
+            <button class="ord-f-btn on" onclick="filterOrders('all',this)">Все</button>
+            <button class="ord-f-btn" onclick="filterOrders('new',this)">Новые</button>
+            <button class="ord-f-btn" onclick="filterOrders('done',this)">Выполненные</button>
+          </div>
+          <button class="adm-btn adm-btn-sm" onclick="exportCSV()">📥 Экспорт CSV</button>
+          <button class="adm-btn adm-btn-sm adm-btn-danger" onclick="clearDoneOrders()">🗑 Удалить выполненные</button>
+        </div>
+        <div id="olist"><p style="color:var(--soft);font-size:.88rem;line-height:1.8">Заявки появятся здесь после заполнения форм на сайте.</p></div>
+      </div>
+
+      <!-- TAB 1: GALLERY -->
+      <div class="adm-pane" id="ap1">
+        <div class="adm-section-title">🖼 Галерея работ</div>
+        <div class="adm-section-sub">Управляйте отображением работ в галерее</div>
+        <div style="margin-bottom:16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap"><div class="gallery-search-wrap"><span class="gallery-search-ico">🔍</span><input class="gallery-search" id="works-search" type="text" placeholder="Поиск по названию..." oninput="filterWorks(this.value)"></div></div>
+        <div class="works-grid" id="works-grid"></div>
+        <div class="adm-card">
+          <div class="adm-card-title"><span>➕</span>Добавить новую работу</div>
+          <div class="adm-row2">
+            <div><label class="adm-label">Название *</label><input class="adm-input" type="text" id="a-name" placeholder="Название игрушки"></div>
+            <div><label class="adm-label">Цена</label><input class="adm-input" type="text" id="a-price" placeholder="от 1 500 ₽"></div>
+          </div>
+          <div class="adm-row2">
+            <div>
+              <label class="adm-label">Категория</label>
+              <select class="adm-select" id="a-cat">
+                <option value="dolls">Куклы</option><option value="folk">Народные</option>
+                <option value="birds">Птицы</option><option value="characters">Персонажи</option>
+                <option value="animals">Зверята</option>
+              </select>
+            </div>
+            <div><label class="adm-label">Описание</label><input class="adm-input" type="text" id="a-desc" placeholder="Короткое описание"></div>
+          </div>
+          <label class="adm-label">URL фото</label>
+          <input class="adm-input" type="text" id="a-img" placeholder="https://... или путь к файлу" style="margin-bottom:16px">
+          <label class="adm-label">Статус наличия</label><select class="adm-select" id="a-status" style="margin-bottom:16px"><option value="avail">✓ В наличии</option><option value="order">⏳ Под заказ</option><option value="sold">✕ Продано</option></select>
+          <button class="adm-btn" onclick="addWork()">Добавить в галерею ✿</button>
+        </div>
+      </div>
+
+      <!-- TAB 2: VIDEO -->
+      <div class="adm-pane" id="ap2">
+        <div class="adm-section-title">🎬 Промо-видео</div>
+        <div class="adm-section-sub">Загрузите промо-ролик для главной страницы</div>
+        <div class="adm-card">
+          <div class="adm-card-title"><span>📤</span>Загрузить видео</div>
+          <div class="video-upload-zone" onclick="document.getElementById('videoFileInp').click()">
+            <input type="file" id="videoFileInp" accept="video/*" style="display:none" onchange="handleVideoUpload(this)">
+            <span class="upload-ico">🎬</span>
+            <p>Нажмите для выбора видео</p>
+            <small>MP4, WebM, MOV — до 100 МБ</small>
+          </div>
+          <div class="adm-card-title" style="margin-top:20px"><span>🔗</span>Или вставьте ссылку на YouTube / VK Video</div>
+          <div style="display:flex;gap:10px;align-items:flex-end">
+            <div style="flex:1">
+              <label class="adm-label">Ссылка на видео</label>
+              <input class="adm-input" type="text" id="video-url-inp" placeholder="https://youtube.com/watch?v=... или vk.com/video...">
+            </div>
+            <button class="adm-btn" style="flex-shrink:0;margin-bottom:1px" onclick="setVideoURL()">Применить</button>
+          </div>
+          <div class="video-list" id="video-list"></div>
+          <div class="adm-tip">После загрузки видео появится на главной странице в секции «Промо». Поддерживаются ссылки YouTube, ВКонтакте, и локальные файлы.</div>
+        </div>
+        <div class="adm-card">
+          <div class="adm-card-title"><span>✏️</span>Текст секции видео</div>
+          <label class="adm-label">Заголовок</label>
+          <input class="adm-input" id="promo-title-inp" value="Смотрите, как рождается магия" oninput="syncText('promo-title',this.value)">
+          <label class="adm-label">Подзаголовок</label>
+          <textarea class="adm-textarea" id="promo-sub-inp" oninput="syncText('promo-sub',this.value)">Короткий ролик о том, как создаются авторские игрушки в Мастерской Чудес — с любовью и вниманием к каждой детали</textarea>
+        </div>
+      </div>
+
+      <!-- TAB 3: PHOTOS -->
+      <div class="adm-pane" id="ap3">
+        <div class="adm-section-title">📷 Фотографии сайта</div>
+        <div class="adm-section-sub">Замените фотографии на любых секциях сайта</div>
+
+        <div class="adm-card">
+          <div class="adm-card-title"><span>🏠</span>Главная секция (герой)</div>
+          <p style="font-size:.8rem;color:var(--soft);margin-bottom:14px;font-weight:300">3 фотографии в правой части главного экрана</p>
+          <div id="hero-img-manager">
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+              <div>
+                <div style="font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--soft);margin-bottom:6px">Фото 1 (большое)</div>
+                <div class="img-upload-zone" style="padding:14px">
+                  <input type="file" accept="image/*" onchange="replaceHeroImg(this,0)">
+                  <img id="hi-prev0" src="IMG_3572.jpeg" style="width:100%;height:80px;object-fit:cover;border-radius:8px;display:block">
+                  <p style="margin-top:6px;font-size:.72rem">Нажмите для замены</p>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--soft);margin-bottom:6px">Фото 2</div>
+                <div class="img-upload-zone" style="padding:14px">
+                  <input type="file" accept="image/*" onchange="replaceHeroImg(this,1)">
+                  <img id="hi-prev1" src="IMG_3566.jpeg" style="width:100%;height:80px;object-fit:cover;border-radius:8px;display:block">
+                  <p style="margin-top:6px;font-size:.72rem">Нажмите для замены</p>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--soft);margin-bottom:6px">Фото 3</div>
+                <div class="img-upload-zone" style="padding:14px">
+                  <input type="file" accept="image/*" onchange="replaceHeroImg(this,2)">
+                  <img id="hi-prev2" src="IMG_3563.jpeg" style="width:100%;height:80px;object-fit:cover;border-radius:8px;display:block">
+                  <p style="margin-top:6px;font-size:.72rem">Нажмите для замены</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="adm-card">
+          <div class="adm-card-title"><span>👤</span>Фото О мастере</div>
+          <div class="img-upload-zone" style="padding:20px;display:flex;gap:16px;align-items:center;text-align:left">
+            <input type="file" accept="image/*" onchange="replaceAboutImg(this)">
+            <img id="about-prev" src="IMG_3567.jpeg" style="width:80px;height:80px;object-fit:cover;border-radius:12px;flex-shrink:0">
+            <div><p style="font-size:.9rem;margin-bottom:4px">Нажмите для замены фото мастера</p><small style="font-size:.72rem;color:var(--soft)">Рекомендуем портретное фото 3:4</small></div>
+          </div>
+        </div>
+
+        <div class="adm-card">
+          <div class="adm-card-title"><span>🖼</span>Добавить фото в галерею</div>
+          <div class="img-upload-zone" id="gallery-upload-zone">
+            <input type="file" accept="image/*" multiple onchange="addGalleryImgs(this)">
+            <p>Нажмите или перетащите фото</p>
+            <small style="font-size:.72rem;color:var(--soft)">Можно выбрать несколько сразу</small>
+          </div>
+          <div class="img-preview-grid" id="gallery-preview"></div>
+        </div>
+      </div>
+
+      <!-- TAB 4: DESIGN -->
+      <div class="adm-pane" id="ap4">
+        <div class="adm-section-title">🎨 Цвета и шрифты</div>
+        <div class="adm-section-sub">Изменяйте внешний вид сайта в реальном времени</div>
+
+        <div class="adm-card">
+          <div class="adm-card-title"><span>🎨</span>Цветовая тема</div>
+          <label class="adm-label">Основной акцент (розовый)</label>
+          <div class="color-row">
+            <input type="color" value="#d4778a" id="clr-rose" oninput="applyColor('--rose',this.value)" style="width:44px;height:44px;border-radius:8px;border:none;cursor:pointer;padding:2px">
+            <div class="color-label">Кнопки, ссылки, акценты</div>
+          </div>
+          <label class="adm-label">Тёмный акцент (насыщенный розовый)</label>
+          <div class="color-row">
+            <input type="color" value="#b5566a" id="clr-deep" oninput="applyColor('--deep-rose',this.value)" style="width:44px;height:44px;border-radius:8px;border:none;cursor:pointer;padding:2px">
+            <div class="color-label">Ховер-эффекты, градиенты</div>
+          </div>
+          <label class="adm-label">Золото</label>
+          <div class="color-row">
+            <input type="color" value="#d4a96a" id="clr-gold" oninput="applyColor('--gold',this.value)" style="width:44px;height:44px;border-radius:8px;border:none;cursor:pointer;padding:2px">
+            <div class="color-label">Декоративные элементы</div>
+          </div>
+          <label class="adm-label">Фон страницы</label>
+          <div class="color-row">
+            <input type="color" value="#fdf6f0" id="clr-bg" oninput="applyColor('--bg',this.value)" style="width:44px;height:44px;border-radius:8px;border:none;cursor:pointer;padding:2px">
+            <div class="color-label">Основной цвет фона</div>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
+            <button class="adm-btn adm-btn-sm" onclick="applyTheme('rose')">🌸 Розовый</button>
+            <button class="adm-btn adm-btn-sm" onclick="applyTheme('lavender')">💜 Лавандовый</button>
+            <button class="adm-btn adm-btn-sm" onclick="applyTheme('sage')">🌿 Зелёный</button>
+            <button class="adm-btn adm-btn-sm" onclick="applyTheme('gold')">✨ Золотой</button>
+            <button class="adm-btn adm-btn-sm" onclick="applyTheme('teal')">🦋 Бирюзовый</button>
+          </div>
+        </div>
+
+        <div class="adm-card">
+          <div class="adm-card-title"><span>🔤</span>Шрифты</div>
+          <label class="adm-label">Сказочный заголовок (логотип, заголовки секций)</label>
+          <div>
+            <div class="font-option active" onclick="applyFairyFont('Great Vibes',this)">
+              <div class="font-option-name">Great Vibes</div>
+              <div class="font-option-preview" style="font-family:'Great Vibes',cursive">Мастерская</div>
+            </div>
+            <div class="font-option" onclick="applyFairyFont('Dancing Script',this)">
+              <div class="font-option-name">Dancing Script</div>
+              <div class="font-option-preview" style="font-family:'Dancing Script',cursive">Мастерская</div>
+            </div>
+            <div class="font-option" onclick="applyFairyFont('Pacifico',this)">
+              <div class="font-option-name">Pacifico</div>
+              <div class="font-option-preview" style="font-family:'Pacifico',cursive">Мастерская</div>
+            </div>
+          </div>
+          <label class="adm-label">Основной шрифт текстов</label>
+          <div>
+            <div class="font-option active" onclick="applyBodyFont('Nunito',this)">
+              <div class="font-option-name">Nunito</div>
+              <div class="font-option-preview" style="font-family:'Nunito',sans-serif">Авторские игрушки</div>
+            </div>
+            <div class="font-option" onclick="applyBodyFont('Lora',this)">
+              <div class="font-option-name">Lora</div>
+              <div class="font-option-preview" style="font-family:'Lora',serif">Авторские игрушки</div>
+            </div>
+            <div class="font-option" onclick="applyBodyFont('Mulish',this)">
+              <div class="font-option-name">Mulish</div>
+              <div class="font-option-preview" style="font-family:'Mulish',sans-serif">Авторские игрушки</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="adm-card">
+          <div class="adm-card-title"><span>📐</span>Размеры и отступы</div>
+          <label class="adm-label">Размер логотипа</label>
+          <div class="range-row">
+            <input type="range" class="adm-range" min="1.5" max="4" step="0.1" value="2.2" oninput="applyFontSize('.logo-fairy',this.value+'rem');this.nextElementSibling.textContent=this.value+'rem'">
+            <span class="range-val">2.2rem</span>
+          </div>
+          <label class="adm-label">Размер главного заголовка</label>
+          <div class="range-row">
+            <input type="range" class="adm-range" min="3" max="8" step="0.2" value="6.5" oninput="applyFontSize('.hero-fairy-title',this.value+'rem');this.nextElementSibling.textContent=this.value+'rem'">
+            <span class="range-val">6.5rem</span>
+          </div>
+          <label class="adm-label">Размер кнопок (padding)</label>
+          <div class="range-row">
+            <input type="range" class="adm-range" min="8" max="22" step="1" value="15" oninput="applyBtnPad(this.value);this.nextElementSibling.textContent=this.value+'px'">
+            <span class="range-val">15px</span>
+          </div>
+          <label class="adm-label">Скругление карточек</label>
+          <div class="range-row">
+            <input type="range" class="adm-range" min="0" max="32" step="2" value="20" oninput="applyCardRadius(this.value);this.nextElementSibling.textContent=this.value+'px'">
+            <span class="range-val">20px</span>
+          </div>
+        </div>
+
+        <div class="adm-card">
+          <div class="adm-card-title"><span>🌸</span>Анимированные лепестки</div>
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <span style="font-size:.85rem;color:var(--mid)">Показывать летающие лепестки</span>
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer">
+              <input type="checkbox" id="petals-toggle" checked onchange="togglePetals(this.checked)" style="accent-color:var(--rose);width:18px;height:18px">
+              <span style="font-size:.8rem;color:var(--soft)">Вкл</span>
+            </label>
+          </div>
+          <label class="adm-label" style="margin-top:14px">Количество лепестков</label>
+          <div class="range-row">
+            <input type="range" class="adm-range" min="0" max="30" step="1" value="20" id="petals-count" oninput="updatePetals(this.value);this.nextElementSibling.textContent=this.value">
+            <span class="range-val">20</span>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- TAB 5: TEXTS -->
+      <div class="adm-pane" id="ap5">
+        <div class="adm-section-title">✏️ Тексты сайта</div>
+        <div class="adm-section-sub">Все изменения применяются мгновенно и сохраняются автоматически</div>
+
+        <div class="adm-card">
+          <div class="adm-card-title"><span>🏠</span>Главная секция</div>
+          <label class="adm-label">Сказочный заголовок (логотип)</label>
+          <input class="adm-input" id="t-hero-fairy" value="Мастерская Чудес" oninput="syncText('hero-fairy',this.value);schedSave()">
+          <label class="adm-label">Строка в шапке "Принимаю заказы..."</label>
+          <input class="adm-input" id="t-hero-badge" value="Принимаю заказы · Ручная работа" oninput="syncText('hero-badge',this.value);schedSave()">
+          <label class="adm-label">Выделенный текст заголовка (курсив)</label>
+          <input class="adm-input" id="t-hero-em" value="маленькое волшебство" oninput="syncText('hero-em',this.value);schedSave()">
+          <label class="adm-label">Описание на главной</label>
+          <textarea class="adm-textarea" id="t-hero-desc" oninput="syncText('hero-desc',this.value);schedSave()">Создаю авторских кукол, сказочных персонажей и мягкие игрушки. Каждое изделие — уникально, сшито вручную с любовью и вниманием к каждой детали.</textarea>
+          <label class="adm-label">Цитата в плавающей карточке</label>
+          <input class="adm-input" id="t-hq" value="Шью с любовью — для вас" oninput="syncTextQuote('hq',this.value);schedSave()">
+          <div class="adm-row2" style="margin-top:12px">
+            <div>
+              <label class="adm-label">Статистика 1 — число</label>
+              <input class="adm-input" id="t-stat1n" value="200+" oninput="syncText('stat1n',this.value);schedSave()">
+              <label class="adm-label">Статистика 1 — подпись</label>
+              <input class="adm-input" id="t-stat1l" value="Игрушек создано" oninput="syncText('stat1l',this.value);schedSave()">
+            </div>
+            <div>
+              <label class="adm-label">Статистика 2 — число</label>
+              <input class="adm-input" id="t-stat2n" value="5+" oninput="syncText('stat2n',this.value);schedSave()">
+              <label class="adm-label">Статистика 2 — подпись</label>
+              <input class="adm-input" id="t-stat2l" value="Лет мастерства" oninput="syncText('stat2l',this.value);schedSave()">
+            </div>
+          </div>
+          <label class="adm-label">Статистика 3 — число</label>
+          <input class="adm-input" id="t-stat3n" value="100%" oninput="syncText('stat3n',this.value);schedSave()">
+          <label class="adm-label">Статистика 3 — подпись</label>
+          <input class="adm-input" id="t-stat3l" value="Ручная работа" oninput="syncText('stat3l',this.value);schedSave()">
+        </div>
+
+        <div class="adm-card">
+          <div class="adm-card-title"><span>🎬</span>Промо-видео</div>
+          <label class="adm-label">Заголовок секции</label>
+          <input class="adm-input" id="promo-title-inp" value="Смотрите, как рождается магия" oninput="syncText('promo-title',this.value);schedSave()">
+          <label class="adm-label">Подзаголовок</label>
+          <textarea class="adm-textarea" id="promo-sub-inp" oninput="syncText('promo-sub',this.value);schedSave()">Короткий ролик о том, как создаются авторские игрушки в Мастерской Чудес — с любовью и вниманием к каждой детали</textarea>
+        </div>
+
+        <div class="adm-card">
+          <div class="adm-card-title"><span>👤</span>О мастере</div>
+          <label class="adm-label">Имя мастера</label>
+          <input class="adm-input" id="t-mn" value="Мари" oninput="syncText('mn',this.value);syncNameAll(this.value)">
+          <label class="adm-label">Роль / подпись</label>
+          <input class="adm-input" id="t-mr" value="Мастер · Мастерская Чудес" oninput="syncText('mr',this.value);schedSave()">
+          <label class="adm-label">Цитата на фото (без кавычек)</label>
+          <input class="adm-input" id="t-aq" value="Вкладываю частичку сказки в каждую игрушку" oninput="syncTextQuote('aq',this.value);schedSave()">
+          <label class="adm-label">Подпись к цитате</label>
+          <input class="adm-input" id="t-ac" value="— Мари" oninput="syncText('ac',this.value);schedSave()">
+          <label class="adm-label">Абзац 1 (о себе)</label>
+          <textarea class="adm-textarea" id="t-ap1" oninput="syncInnerHTML('ap1',this.value);schedSave()">Меня зовут Мари, и я создаю авторские игрушки ручной работы. Каждый персонаж — это маленькая история, придуманная специально для вас.</textarea>
+          <label class="adm-label">Абзац 2</label>
+          <textarea class="adm-textarea" id="t-ap2" oninput="syncInnerHTML('ap2',this.value);schedSave()">В моей мастерской живут Бабы-Яги с характером, добрые домовые, весёлые вороны, нежные куколки и народные обереги. Все шьются вручную из качественных тканей с любовью.</textarea>
+          <label class="adm-label">Абзац 3</label>
+          <textarea class="adm-textarea" id="t-ap3" oninput="syncInnerHTML('ap3',this.value);schedSave()">Принимаю индивидуальные заказы — создам любого персонажа по вашему описанию или рисунку. Ваша игрушка будет единственной в мире.</textarea>
+        </div>
+
+        <div class="adm-card">
+          <div class="adm-card-title"><span>💬</span>Раздел «Написать»</div>
+          <label class="adm-label">Текст приглашения к чату</label>
+          <textarea class="adm-textarea" id="t-chat-intro" oninput="syncText('chat-intro',this.value);schedSave()">Хочется узнать о наличии, уточнить цену или просто поговорить о будущей игрушке — я всегда рада! Пишите прямо здесь или в Telegram ✿</textarea>
+        </div>
+
+        <div class="adm-card">
+          <div class="adm-card-title"><span>📱</span>Контакты</div>
+          <label class="adm-label">Telegram (только ник, без @)</label>
+          <input class="adm-input" id="t-tg" value="mari_toys" oninput="updateTg(this.value)">
+          <label class="adm-label">Email</label>
+          <input class="adm-input" id="t-em" value="mari@masterskaya.ru" oninput="updateEmail(this.value)">
+          <label class="adm-label">Название в соцсетях (Instagram/VK)</label>
+          <input class="adm-input" id="t-social" value="@masterskaya_chudes" oninput="syncText('cso',this.value);schedSave()">
+          <label class="adm-label">Подпись в подвале</label>
+          <input class="adm-input" id="t-foot" value="Мастерская Чудес" oninput="syncText('foot-name',this.value);schedSave()">
+          <label class="adm-label">Копирайт</label>
+          <input class="adm-input" id="t-copy" value="© 2025 · Мари · Все права защищены" oninput="syncText('fcopy',this.value);schedSave()">
+          <button class="adm-btn" style="margin-top:16px" onclick="saveAll();showToast('✿ Контакты и тексты сохранены!')">💾 Сохранить всё</button>
+        </div>
+
+        <div class="adm-card">
+          <div class="adm-card-title"><span>✏️</span>Прямое редактирование на сайте</div>
+          <p style="font-size:.82rem;color:var(--mid);margin-bottom:14px;font-weight:300">Включите режим — кликните на любой текст прямо на странице сайта и редактируйте. Изменения сохраняются автоматически.</p>
+          <button class="adm-btn" onclick="toggleLiveEdit()">✏️ Включить режим редактирования</button>
+          <div class="adm-tip">Элементы с розовой рамкой доступны для редактирования. Нажмите кнопку ещё раз чтобы выйти из режима.</div>
+        </div>
+      </div>
+
+      <!-- TAB 6: SETTINGS -->
+      <div class="adm-pane" id="ap6">
+        <div class="adm-section-title">⚙ Настройки</div>
+        <div class="adm-section-sub">Системные настройки — сохраняются автоматически</div>
+
+        <div class="adm-card">
+          <div class="adm-card-title"><span>🔐</span>Безопасность</div>
+          <label class="adm-label">Текущий пароль</label>
+          <input class="adm-input" type="password" id="s-old-pw" placeholder="Введите текущий пароль">
+          <label class="adm-label">Новый пароль</label>
+          <input class="adm-input" type="password" id="s-pw" placeholder="Минимум 4 символа">
+          <label class="adm-label">Повтор нового пароля</label>
+          <input class="adm-input" type="password" id="s-pw2" placeholder="Повторите новый пароль">
+          <button class="adm-btn" style="margin-top:16px" onclick="changePwd()">🔒 Сменить пароль</button>
+        </div>
+
+        <div class="adm-card">
+          <div class="adm-card-title"><span>📋</span>Информация о сайте</div>
+          <label class="adm-label">Заголовок вкладки браузера</label>
+          <input class="adm-input" id="s-title" value="Мастерская Чудес — Авторские игрушки Мари" oninput="document.title=this.value;schedSave()">
+          <button class="adm-btn" style="margin-top:16px" onclick="saveAll();showToast('✿ Настройки сохранены!')">💾 Сохранить</button>
+        </div>
+
+        <div class="adm-card">
+          <div class="adm-card-title"><span>💾</span>Состояние данных</div>
+          <p style="font-size:.82rem;color:var(--mid);margin-bottom:16px;line-height:1.8;font-weight:300">Все изменения сохраняются в браузере автоматически. Здесь вы можете принудительно сохранить или сбросить все настройки до начальных значений.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <button class="adm-btn" onclick="saveAll();showToast('✿ Все данные сохранены!')">💾 Сохранить сейчас</button>
+            <button class="adm-btn adm-btn-outline" onclick="exportSettings()">📥 Экспортировать</button>
+            <button class="adm-btn adm-btn-danger" onclick="resetAll()">🗑 Сбросить всё</button>
+          </div>
+          <div class="adm-tip" id="save-status">Данные сохраняются автоматически каждые 30 секунд и при любом изменении.</div>
+        </div>
+
+        <div class="adm-card">
+          <div class="adm-card-title"><span>🔑</span>Вход в панель мастера</div>
+          <div class="adm-tip"><strong>Ссылка для входа:</strong><br>Добавьте к адресу сайта: <code style="background:#fff4e8;padding:2px 6px;border-radius:4px">?master=chudes</code><br>Например: <code style="background:#fff4e8;padding:2px 6px;border-radius:4px">мойсайт.ru/?master=chudes</code><br><br>Пароль по умолчанию: <strong>mari2025</strong></div>
+        </div>
+
+                <div class="adm-card" style="border:2px solid #ff6b35;background:linear-gradient(135deg,rgba(255,107,53,.06),#fff)">
+          <div class="adm-card-title" style="color:#e05a2b"><span>☁️</span>Облачная синхронизация (Firebase)</div>
+          <p style="font-size:.82rem;color:var(--mid);line-height:1.85;margin-bottom:14px;font-weight:300">
+            Изменения сохраняются в облако — одинаково на <strong>любом устройстве и браузере</strong>.<br>
+            <b>Инструкция (1 раз, полностью бесплатно):</b><br>
+            ① <a href="https://console.firebase.google.com" target="_blank" style="color:#e05a2b">console.firebase.google.com</a> → войти через Google → <b>Создать проект</b><br>
+            ② Слева: <b>Realtime Database</b> → <b>Создать базу данных</b> → <b>Тестовый режим</b><br>
+            ③ Скопируйте <b>URL базы</b> — вида <code style="background:rgba(255,107,53,.1);padding:1px 5px;border-radius:3px">https://ИМЯ-default-rtdb.firebaseio.com</code><br>
+            ④ ⚙ <b>Настройки проекта</b> → <b>Сервисные аккаунты</b> → <b>Секреты базы данных</b> → <b>Показать</b> → скопируйте
+          </p>
+          <label class="adm-label">URL базы данных Firebase</label>
+          <input class="adm-input" type="text" id="s-fb-url" placeholder="https://ИМЯ-default-rtdb.firebaseio.com" autocomplete="off">
+          <label class="adm-label">Database Secret (длинная строка)</label>
+          <input class="adm-input" type="password" id="s-fb-sec" placeholder="вставьте секрет..." autocomplete="off">
+          <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap">
+            <button class="adm-btn" style="background:linear-gradient(135deg,#ff6b35,#e05a2b);box-shadow:0 4px 14px rgba(255,107,53,.4)" onclick="cloudCredsSetup()">💾 Подключить Firebase</button>
+            <button class="adm-btn adm-btn-outline" onclick="cloudSaveNow()">☁ Сохранить в облако</button>
+            <button class="adm-btn adm-btn-outline" onclick="cloudLoadNow()">🔄 Загрузить из облака</button>
+          </div>
+          <div class="adm-tip" id="cloud-status" style="margin-top:10px;border-left:3px solid #ff6b35">
+            Не настроено. Введите URL и Secret → нажмите «Подключить Firebase».
+          </div>
+        </div>
+
+        <div class="adm-card" style="border:2px solid #7c4dff;background:linear-gradient(135deg,rgba(124,77,255,.06),#fff)">
+          <div class="adm-card-title" style="color:#7c4dff"><span>🌐</span>Публикация сайта (один раз)</div>
+          <p style="font-size:.82rem;color:var(--mid);line-height:1.9;margin-bottom:14px;font-weight:300">
+            <b>Шаг 1 — Настройте Firebase</b> (блок выше) и нажмите <b>«Сохранить в облако»</b><br>
+            <b>Шаг 2 — Скачайте сайт</b> кнопкой ниже (ключи вшиваются автоматически)<br>
+            <b>Шаг 3 — Выложите файл на хостинг:</b><br>
+            &nbsp;&nbsp;→ <a href="https://github.com" target="_blank" style="color:#7c4dff"><b>GitHub Pages</b></a> (бесплатно навсегда):<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;① Создайте аккаунт → <b>New repository</b> → имя: <code style="background:rgba(124,77,255,.1);padding:1px 5px;border-radius:3px">masterskaya</code><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;② Загрузите файл, переименуйте его в <code style="background:rgba(124,77,255,.1);padding:1px 5px;border-radius:3px">index.html</code><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;③ <b>Settings → Pages → Deploy from branch → main → Save</b><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;④ Сайт будет на: <code style="background:rgba(124,77,255,.1);padding:1px 5px;border-radius:3px">ВАШ-НИК.github.io/masterskaya</code><br><br>
+            <b>После публикации:</b> все изменения через панель → <b>«☁ Сохранить в облако»</b> → клиенты видят сразу!
+          </p>
+          <button class="adm-btn" style="background:linear-gradient(135deg,#7c4dff,#5c2de0);box-shadow:0 4px 14px rgba(124,77,255,.4)" onclick="downloadSite()">⬇️ Скачать сайт для публикации</button>
+          <div class="adm-tip" style="margin-top:10px;border-left:3px solid #7c4dff">Файл уже содержит ваши Firebase-ключи — клиенты будут автоматически видеть актуальные данные.</div>
+        </div>
+
+        <div class="adm-card" style="border:2px solid #29a8e0;background:linear-gradient(135deg,rgba(41,168,224,.06),#fff)">
+          <div class="adm-card-title" style="color:#1a88c0"><span>✈️</span>Уведомления о заказах в Telegram</div>
+          <p style="font-size:.82rem;color:var(--mid);line-height:1.85;margin-bottom:14px;font-weight:300">
+            Каждый новый заказ сразу приходит в <strong>Telegram</strong>.<br>
+            <b>Инструкция:</b><br>
+            ① Напишите <a href="https://t.me/BotFather" target="_blank" style="color:#1a88c0">@BotFather</a> в Telegram → команда <b>/newbot</b> → скопируйте <b>токен</b><br>
+            ② Напишите своему боту любое слово (например «привет»)<br>
+            ③ Откройте в браузере: <code style="background:rgba(41,168,224,.09);padding:1px 5px;border-radius:3px;font-size:.76rem;word-break:break-all">https://api.telegram.org/botВАШ_ТОКЕН/getUpdates</code><br>
+            ④ Найдите <b>"id"</b> внутри <b>"chat"</b> — это ваш Chat ID (число)
+          </p>
+          <label class="adm-label">Bot Token</label>
+          <input class="adm-input" type="password" id="s-tg-token" placeholder="1234567890:ABCdef..." autocomplete="off">
+          <label class="adm-label">Ваш Chat ID</label>
+          <input class="adm-input" type="text" id="s-tg-chat" placeholder="123456789" autocomplete="off">
+          <button class="adm-btn" style="margin-top:14px;background:linear-gradient(135deg,#29a8e0,#1a88c0);box-shadow:0 4px 14px rgba(41,168,224,.4)" onclick="tgTest()">✈️ Отправить тестовое сообщение</button>
+          <div class="adm-tip" style="margin-top:10px;border-left:3px solid #29a8e0">После настройки каждый новый заказ мгновенно приходит в Telegram ✿</div>
+        </div>
+<div class="adm-card">
+          <div class="adm-card-title"><span>➕</span>Добавить отзыв</div>
+          <div class="adm-row2">
+            <div><label class="adm-label">Имя покупателя *</label><input class="adm-input" type="text" id="rv-name" placeholder="Имя, Город"></div>
+            <div>
+              <label class="adm-label">Рейтинг</label>
+              <select class="adm-select" id="rv-stars">
+                <option value="5">★★★★★ — Отлично</option>
+                <option value="4">★★★★☆ — Хорошо</option>
+                <option value="3">★★★☆☆ — Нормально</option>
+              </select>
+            </div>
+          </div>
+          <label class="adm-label">Текст отзыва *</label>
+          <textarea class="adm-textarea" id="rv-text" placeholder="Поделитесь впечатлением покупателя..."></textarea>
+          <label class="adm-label">Эмодзи аватара</label>
+          <input class="adm-input" type="text" id="rv-emoji" value="🌸" placeholder="🌸" style="max-width:80px;margin-bottom:16px">
+          <button class="adm-btn" onclick="addReview()">Добавить отзыв ✿</button>
+        </div>
+      </div>
+
+    </div><!-- adm-content -->
+  </div><!-- adm-body -->
+</div><!-- admin-panel -->
+
+<!-- EDIT CARD MODAL -->
+<div id="edit-modal">
+  <div class="edit-modal-box">
+    <button class="edit-modal-close" onclick="closeEditModal()">×</button>
+    <div class="edit-modal-title">✏️ Редактировать работу</div>
+    <div class="edit-modal-sub">Изменения сразу отображаются в галерее</div>
+    <img id="edit-preview-img" class="edit-preview-img" src="" alt="">
+    <div class="adm-row2">
+      <div>
+        <label class="adm-label">Название *</label>
+        <input class="adm-input" type="text" id="edit-name" placeholder="Название игрушки">
+      </div>
+      <div>
+        <label class="adm-label">Цена</label>
+        <input class="adm-input" type="text" id="edit-price" placeholder="от 1 500 ₽">
+      </div>
+    </div>
+    <div class="adm-row2">
+      <div>
+        <label class="adm-label">Категория</label>
+        <select class="adm-select" id="edit-cat">
+          <option value="dolls">Куклы</option>
+          <option value="folk">Народные</option>
+          <option value="birds">Птицы</option>
+          <option value="characters">Персонажи</option>
+          <option value="animals">Зверята</option>
+        </select>
+      </div>
+      <div>
+        <label class="adm-label">Статус</label>
+        <select class="adm-select" id="edit-status">
+          <option value="avail">✓ В наличии</option>
+          <option value="order">⏳ Под заказ</option>
+          <option value="sold">✕ Продано</option>
+        </select>
+      </div>
+    </div>
+    <label class="adm-label">Описание</label>
+    <input class="adm-input" type="text" id="edit-desc" placeholder="Краткое описание" style="margin-bottom:12px">
+    <label class="adm-label">URL / путь к фото</label>
+    <input class="adm-input" type="text" id="edit-img" placeholder="https://... или имя файла" oninput="updateEditPreview(this.value)" style="margin-bottom:20px">
+    <input type="hidden" id="edit-id">
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <button class="adm-btn" onclick="saveEditWork()">💾 Сохранить изменения</button>
+      <button class="adm-btn adm-btn-danger" onclick="deleteEditWork()">🗑 Удалить работу</button>
+    </div>
+  </div>
+</div>
+
+<!-- DOWNLOAD PROGRESS -->
+<div class="dl-progress" id="dl-progress">
+  <div class="dl-progress-ico">⚙</div>
+  <div class="dl-progress-text">Генерирую файл сайта...<br><small style="color:var(--soft);font-size:.75rem">Это займёт несколько секунд</small></div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">✿ Готово!</div>
+
+<!-- LIVE EDIT BADGE -->
+<div class="live-edit-badge" id="liveEditBadge">
+  <span class="live-edit-dot"></span>
+  Режим редактирования активен
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+'use strict';
+
+/* ═══════════════════════════════════════
+   УТИЛИТЫ
+═══════════════════════════════════════ */
+function g(id){ return document.getElementById(id); }
+function escHtml(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function escJs(s){ return String(s||'').replace(/\\/g,'\\\\').replace(/'/g,"\\'"); }
+
+/* ═══════════════════════════════════════
+   LOCALSTORAGE — СОХРАНЕНИЕ
+═══════════════════════════════════════ */
+const STORE_KEY = 'masterskaya_v3';
+const CREDS_KEY  = 'mc_cloud_creds';
+
+/* ══ ОБЛАЧНЫЕ НАСТРОЙКИ (Firebase Realtime DB) ══ */
+let FB_URL    = (window.__FB_URL__    || 'https://studiocloud-1f0ef-default-rtdb.europe-west1.firebasedatabase.app');
+let FB_SECRET = (window.__FB_SECRET__ || 'VNgBLX0VRVCPeNgZjtCL8370QEujDrbOwJPEKLxP');
+let TG_TOKEN  = (window.__TG_TOKEN__  || '');
+let TG_CHAT   = (window.__TG_CHAT__   || '');
+let cloudTimer = null;
+
+function loadCloudCreds(){
+  try{
+    const d = JSON.parse(localStorage.getItem(CREDS_KEY)||'{}');
+    // Приоритет: вшитые ключи > localStorage
+    FB_URL    = FB_URL    || d.fu||'';
+    FB_SECRET = FB_SECRET || d.fs||'';
+    TG_TOKEN  = TG_TOKEN  || d.tt||'';
+    TG_CHAT   = TG_CHAT   || d.tc||'';
+    // Если есть вшитые — сохранить в localStorage тоже
+    if(window.__FB_URL__ && !d.fu){
+      localStorage.setItem(CREDS_KEY, JSON.stringify({fu:FB_URL,fs:FB_SECRET,tt:TG_TOKEN,tc:TG_CHAT}));
+    }
+    const su=g('s-fb-url'),ss=g('s-fb-sec'),st=g('s-tg-token'),sc=g('s-tg-chat');
+    if(su) su.value=FB_URL;   if(ss) ss.value=FB_SECRET;
+    if(st) st.value=TG_TOKEN; if(sc) sc.value=TG_CHAT;
+    const cs=g('cloud-status');
+    if(FB_URL && FB_SECRET && cs)
+      cs.textContent='✓ Firebase настроен: '+FB_URL.replace('https://','').split('.')[0];
+  }catch(e){}
+}
+
+function cloudCredsSetup(){
+  const su=g('s-fb-url'),ss=g('s-fb-sec'),st=g('s-tg-token'),sc=g('s-tg-chat');
+  FB_URL    = (su?su.value.trim():'')||FB_URL;
+  FB_SECRET = (ss?ss.value.trim():'')||FB_SECRET;
+  TG_TOKEN  = (st?st.value.trim():'')||TG_TOKEN;
+  TG_CHAT   = (sc?sc.value.trim():'')||TG_CHAT;
+  if(!FB_URL||!FB_SECRET){ showToast('⚠ Введите URL базы и Secret'); return; }
+  // Normalize URL
+  if(!FB_URL.startsWith('http')) FB_URL='https://'+FB_URL;
+  if(FB_URL.endsWith('/')) FB_URL=FB_URL.slice(0,-1);
+  if(su) su.value=FB_URL;
+  localStorage.setItem(CREDS_KEY, JSON.stringify({fu:FB_URL,fs:FB_SECRET,tt:TG_TOKEN,tc:TG_CHAT}));
+  const cs=g('cloud-status');
+  if(cs) cs.textContent='✓ Сохранено: '+FB_URL.replace('https://','').split('.')[0];
+  showToast('✿ Firebase подключён!');
+}
+
+/* ════ FIREBASE REALTIME DATABASE REST API ════ */
+// Работает из любого браузера, включая file:// — без CORS ошибок
+function fbEndpoint(){ return FB_URL+'/masterskaya.json?auth='+encodeURIComponent(FB_SECRET); }
+
+async function cloudPush(data){
+  if(!FB_URL||!FB_SECRET) return;
+  const cs=g('cloud-status');
+  try{
+    // Убираем blob-объекты, сжимаем base64 картинки до разумного размера
+    const payload = JSON.parse(JSON.stringify(data));
+    const r=await fetch(fbEndpoint(),{
+      method:'PUT',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(payload)
+    });
+    if(r.ok){
+      if(cs) cs.textContent='☁ Синхронизировано: '+new Date().toLocaleTimeString('ru');
+    } else {
+      const txt=await r.text();
+      if(cs) cs.textContent='⚠ Ошибка '+r.status+': '+txt.slice(0,60);
+      console.warn('Firebase PUT error:', r.status, txt);
+    }
+  }catch(e){
+    if(cs) cs.textContent='⚠ '+e.message;
+    console.warn('cloudPush error:', e);
+  }
+}
+
+async function cloudPull(){
+  if(!FB_URL||!FB_SECRET) return null;
+  try{
+    const r=await fetch(fbEndpoint());
+    if(!r.ok) return null;
+    return await r.json();
+  }catch(e){ console.warn('cloudPull error:', e); return null; }
+}
+
+async function cloudSaveNow(){
+  cloudCredsSetup();
+  if(!FB_URL||!FB_SECRET) return;
+  const cs=g('cloud-status');
+  if(cs) cs.textContent='⏳ Сохраняю в Firebase...';
+  const data={
+    v:3, ts:Date.now(), pass:PASS,
+    orders:orders,
+    toys:toys.filter(t=>!t._blob),
+    reviews:reviews, nextId:nextId,
+    texts:gatherTexts(), design:gatherDesign(), video:currentVideo
+  };
+  await cloudPush(data);
+  localStorage.setItem(STORE_KEY, JSON.stringify(data));
+  showToast('☁ Сохранено в Firebase!');
+}
+
+async function cloudLoadNow(){
+  cloudCredsSetup();
+  if(!FB_URL||!FB_SECRET){ showToast('⚠ Сначала введите и сохраните ключи'); return; }
+  const cs=g('cloud-status');
+  if(cs) cs.textContent='⏳ Загружаю из Firebase...';
+  const data=await cloudPull();
+  if(!data||typeof data!=='object'||!data.v){
+    showToast('⚠ Нет данных. Сначала сохраните в облако.');
+    if(cs) cs.textContent='⚠ В Firebase пусто — сначала нажмите «Сохранить»';
+    return;
+  }
+  applyLoadedData(data);
+  localStorage.setItem(STORE_KEY, JSON.stringify(data));
+  renderGallery(activeFilter); renderOrders();
+  if(typeof renderReviews==='function') renderReviews();
+  setTimeout(syncAdminFields,200);
+  if(cs) cs.textContent='✓ Загружено из Firebase: '+new Date().toLocaleTimeString('ru');
+  showToast('☁ Данные загружены!');
+}
+
+/* ════ TELEGRAM ════ */
+async function tgSend(text){
+  if(!TG_TOKEN||!TG_CHAT) return;
+  try{
+    await fetch('https://api.telegram.org/bot'+TG_TOKEN+'/sendMessage',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({chat_id:TG_CHAT,text:text,parse_mode:'HTML'})
+    });
+  }catch(e){ console.warn('tg error',e); }
+}
+
+async function tgTest(){
+  const st=g('s-tg-token'),sc=g('s-tg-chat');
+  TG_TOKEN=(st?st.value.trim():'')||TG_TOKEN;
+  TG_CHAT =(sc?sc.value.trim():'')||TG_CHAT;
+  if(!TG_TOKEN||!TG_CHAT){ showToast('⚠ Введите токен и Chat ID'); return; }
+  localStorage.setItem(CREDS_KEY, JSON.stringify({fu:FB_URL,fs:FB_SECRET,tt:TG_TOKEN,tc:TG_CHAT}));
+  await tgSend('✿ <b>Мастерская Чудес</b>\n\nТест работает! 🎉\nЗаказы будут приходить сюда.');
+  showToast('✈ Тестовое сообщение отправлено!');
+}
+
+function saveAll(){
+  try {
+    const data = {
+      v:3, ts:Date.now(),
+      pass: PASS,
+      orders: orders,
+      toys: toys.filter(t=>!t._blob),
+      reviews: reviews,
+      nextId: nextId,
+      texts: gatherTexts(),
+      design: gatherDesign(),
+      video: currentVideo
+    };
+    localStorage.setItem(STORE_KEY, JSON.stringify(data));
+    const el=g('save-status');
+    if(el) el.textContent='✓ Сохранено: '+new Date().toLocaleTimeString('ru');
+    // Облако — с задержкой чтобы не спамить
+    if(FB_URL && FB_SECRET){
+      clearTimeout(cloudTimer);
+      cloudTimer = setTimeout(()=>cloudPush(data), 2000);
+    }
+  } catch(e){ console.warn('saveAll:', e); }
+}
+
+function gatherTexts(){
+  const ids=['site-logo-name','site-logo-sub','hero-fairy','hero-badge','hero-em','hero-desc',
+    'stat1n','stat1l','stat2n','stat2l','stat3n','stat3l','hq','hm',
+    'promo-title','promo-sub','aq','ac','mn','mr','chat-intro','foot-name','fcopy','cso'];
+  const out={_title:document.title};
+  ids.forEach(id=>{const el=g(id); if(el) out[id]=el.textContent;});
+  ['ap1','ap2','ap3'].forEach(id=>{const el=g(id); if(el) out['_html_'+id]=el.innerHTML;});
+  const ctg=g('ctg'), cem=g('cem');
+  if(ctg){out._ctgText=ctg.textContent; out._ctgHref=ctg.href;}
+  if(cem){out._cemText=cem.textContent; out._cemHref=cem.href;}
+  return out;
+}
+
+function gatherDesign(){
+  const root=document.documentElement, cs=getComputedStyle(root);
+  const cv=p=>(root.style.getPropertyValue(p)||cs.getPropertyValue(p)||'').trim();
+  return {
+    rose:cv('--rose'), deepRose:cv('--deep-rose'), gold:cv('--gold'), bg:cv('--bg'),
+    fontFairy:cv('--font-fairy'), fontBody:cv('--font-body'),
+    petalsOn: g('petals')?g('petals').style.display!=='none':true,
+    petalsCount: g('petals-count')?parseInt(g('petals-count').value)||20:20
+  };
+}
+
+function loadAll(){
+  try {
+    const raw=localStorage.getItem(STORE_KEY);
+    if(!raw) return;
+    const data=JSON.parse(raw);
+    if(!data||data.v!==3) return;
+    applyLoadedData(data); return;  // use unified function
+    if(!data||data.v!==3) return;
+
+    if(data.pass) PASS=data.pass;
+    if(Array.isArray(data.orders)) orders=data.orders;
+    if(Array.isArray(data.toys)&&data.toys.length){ toys=data.toys; nextId=data.nextId||100; }
+    if(Array.isArray(data.reviews)) reviews=data.reviews;
+
+    if(data.texts){
+      const t=data.texts;
+      ['site-logo-name','site-logo-sub','hero-fairy','hero-badge','hero-em','hero-desc',
+       'stat1n','stat1l','stat2n','stat2l','stat3n','stat3l','hq','hm',
+       'promo-title','promo-sub','aq','ac','mn','mr','chat-intro','foot-name','fcopy','cso'
+      ].forEach(id=>{ if(t[id]!==undefined){const el=g(id); if(el) el.textContent=t[id];} });
+      ['ap1','ap2','ap3'].forEach(id=>{
+        const key='_html_'+id;
+        if(t[key]!==undefined){const el=g(id); if(el) el.innerHTML=t[key];}
+      });
+      if(t._ctgText&&g('ctg')){g('ctg').textContent=t._ctgText; if(t._ctgHref) g('ctg').href=t._ctgHref;}
+      if(t._cemText&&g('cem')){g('cem').textContent=t._cemText; if(t._cemHref) g('cem').href=t._cemHref;}
+      if(t._title) document.title=t._title;
+    }
+
+    if(data.design){
+      const d=data.design, root=document.documentElement;
+      if(d.rose) root.style.setProperty('--rose',d.rose);
+      if(d.deepRose) root.style.setProperty('--deep-rose',d.deepRose);
+      if(d.gold) root.style.setProperty('--gold',d.gold);
+      if(d.bg) root.style.setProperty('--bg',d.bg);
+      if(d.fontFairy&&d.fontFairy.trim()) root.style.setProperty('--font-fairy',d.fontFairy);
+      if(d.fontBody&&d.fontBody.trim()) root.style.setProperty('--font-body',d.fontBody);
+      if(d.petalsOn===false&&g('petals')) g('petals').style.display='none';
+      if(d.petalsCount) spawnPetals(d.petalsCount);
+    }
+
+    if(data.video&&data.video.src){
+      currentVideo=data.video;
+      if(data.video.type==='embed') setPromoIframe(data.video.src,data.video.label,false);
+    }
+  } catch(e){ console.warn('loadAll:', e); }
+}
+
+function syncAdminFields(){
+  const sv=(id,val)=>{ const el=g(id); if(el) el.value=val!=null?val:''; };
+  const gt=id=>{ const el=g(id); return el?el.textContent:''; };
+  sv('t-hero-fairy', gt('hero-fairy'));
+  sv('t-hero-badge', gt('hero-badge'));
+  sv('t-hero-em',    gt('hero-em'));
+  sv('t-hero-desc',  gt('hero-desc'));
+  sv('t-hq',         gt('hq').replace(/«|»/g,''));
+  sv('t-stat1n',gt('stat1n')); sv('t-stat1l',gt('stat1l'));
+  sv('t-stat2n',gt('stat2n')); sv('t-stat2l',gt('stat2l'));
+  sv('t-stat3n',gt('stat3n')); sv('t-stat3l',gt('stat3l'));
+  const psi=g('promo-sub-inp'); if(psi) psi.value=gt('promo-sub');
+  sv('promo-title-inp',gt('promo-title'));
+  sv('t-mn',gt('mn')); sv('t-mr',gt('mr'));
+  sv('t-aq',gt('aq').replace(/«|»/g,''));
+  sv('t-ac',gt('ac'));
+  const ap1el=g('ap1'),ap2el=g('ap2'),ap3el=g('ap3');
+  const ta1=g('t-ap1'),ta2=g('t-ap2'),ta3=g('t-ap3');
+  if(ta1&&ap1el) ta1.value=ap1el.textContent;
+  if(ta2&&ap2el) ta2.value=ap2el.textContent;
+  if(ta3&&ap3el) ta3.value=ap3el.textContent;
+  sv('t-chat-intro',gt('chat-intro'));
+  sv('t-tg',gt('ctg').replace('@',''));
+  sv('t-em',gt('cem'));
+  sv('t-social',gt('cso'));
+  sv('t-foot',gt('foot-name'));
+  sv('t-copy',gt('fcopy'));
+  sv('s-title',document.title);
+
+  const root=document.documentElement, cs=getComputedStyle(root);
+  const cv=p=>(root.style.getPropertyValue(p)||cs.getPropertyValue(p)||'').trim();
+  const toHex=c=>{
+    if(!c) return null; c=c.trim();
+    if(c.startsWith('#')&&(c.length===4||c.length===7)) return c;
+    const m=c.match(/\d+/g);
+    return m&&m.length>=3?'#'+m.slice(0,3).map(n=>parseInt(n).toString(16).padStart(2,'0')).join(''):null;
+  };
+  [['clr-rose','--rose'],['clr-deep','--deep-rose'],['clr-gold','--gold'],['clr-bg','--bg']].forEach(([el,p])=>{
+    const hex=toHex(cv(p)); if(hex&&g(el)) g(el).value=hex;
+  });
+  const pt=g('petals-toggle'); if(pt) pt.checked=g('petals')?g('petals').style.display!=='none':true;
+}
+
+let saveTimer;
+function schedSave(){ clearTimeout(saveTimer); saveTimer=setTimeout(saveAll,500); }
+
+/* ══ ПРИМЕНИТЬ ЗАГРУЖЕННЫЕ ДАННЫЕ (из облака или __SITE_DATA__) ══ */
+function applyLoadedData(data){
+  if(!data) return;
+  if(data.pass) PASS=data.pass;
+  if(Array.isArray(data.orders)) orders=data.orders;
+  if(Array.isArray(data.toys)&&data.toys.length){ toys=data.toys; nextId=data.nextId||100; }
+  if(Array.isArray(data.reviews)) reviews=data.reviews;
+  if(data.nextId) nextId=data.nextId;
+  if(data.texts){
+    const t=data.texts;
+    ['site-logo-name','site-logo-sub','hero-fairy','hero-badge','hero-em','hero-desc',
+     'stat1n','stat1l','stat2n','stat2l','stat3n','stat3l','hq','hm',
+     'promo-title','promo-sub','aq','ac','mn','mr','chat-intro','foot-name','fcopy','cso'
+    ].forEach(id=>{ if(t[id]!==undefined){const el=g(id); if(el) el.textContent=t[id];} });
+    ['ap1','ap2','ap3'].forEach(id=>{
+      const k='_html_'+id; if(t[k]!==undefined){const el=g(id); if(el) el.innerHTML=t[k];}
+    });
+    if(t._ctgText&&g('ctg')){ g('ctg').textContent=t._ctgText; if(t._ctgHref) g('ctg').href=t._ctgHref; }
+    if(t._cemText&&g('cem')){ g('cem').textContent=t._cemText; if(t._cemHref) g('cem').href=t._cemHref; }
+    if(t._title) document.title=t._title;
+  }
+  if(data.design){
+    const d=data.design, root=document.documentElement;
+    if(d.rose) root.style.setProperty('--rose',d.rose);
+    if(d.deepRose) root.style.setProperty('--deep-rose',d.deepRose);
+    if(d.gold) root.style.setProperty('--gold',d.gold);
+    if(d.bg) root.style.setProperty('--bg',d.bg);
+    if(d.fontFairy&&d.fontFairy.trim()) root.style.setProperty('--font-fairy',d.fontFairy);
+    if(d.fontBody&&d.fontBody.trim()) root.style.setProperty('--font-body',d.fontBody);
+    if(d.petalsOn===false&&g('petals')) g('petals').style.display='none';
+    if(d.petalsCount) spawnPetals(d.petalsCount);
+  }
+  if(data.video&&data.video.src&&data.video.type==='embed'){
+    currentVideo=data.video; setPromoIframe(data.video.src,data.video.label,false);
+  }
+}
+
+/* ══ АВТО-ЗАГРУЗКА ИЗ ОБЛАКА при открытии страницы ══ */
+async function cloudAutoLoad(){
+  loadCloudCreds();
+  if(!FB_URL||!FB_SECRET) return;
+  const cs=g('cloud-status');
+  if(cs) cs.textContent='⏳ Синхронизирую с облаком...';
+  try{
+    const data=await cloudPull();
+    if(!data){ if(cs) cs.textContent='⚠ Нет данных в облаке'; return; }
+    // Всегда применяем данные из облака (облако — главный источник правды)
+    applyLoadedData(data);
+    localStorage.setItem(STORE_KEY, JSON.stringify({...data,v:3}));
+    renderGallery(activeFilter); renderOrders();
+    if(typeof renderReviews==='function') renderReviews();
+    if(cs) cs.textContent='✓ Синхронизировано: '+new Date().toLocaleTimeString('ru');
+  }catch(e){
+    if(cs) cs.textContent='⚠ '+e.message;
+  }
+}
+
+/* ═══════════════════════════════════════
+   СКАЧАТЬ САЙТ — главная функция
+═══════════════════════════════════════ */
+function downloadSite(){
+  saveAll();
+  const prog=g('dl-progress');
+  if(prog) prog.classList.add('show');
+
+  setTimeout(()=>{
+    try {
+      const html = buildSiteHTML();
+      const blob = new Blob([html], {type:'text/html;charset=utf-8'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'masterskaya-chudes.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      if(prog) prog.classList.remove('show');
+      showToast('✅ Файл сохранён! Загрузите его на сервер.');
+    } catch(e){
+      if(prog) prog.classList.remove('show');
+      console.error('Download error:', e);
+      showToast('⚠ Ошибка при генерации файла.');
+    }
+  }, 200);
+}
+
+function buildSiteHTML(){
+  // Get the original HTML template (everything before <script>)
+  const fullHTML = document.documentElement.outerHTML;
+
+  // Extract current CSS variables
+  const root = document.documentElement;
+  const cs = getComputedStyle(root);
+  const cv = p => (root.style.getPropertyValue(p)||cs.getPropertyValue(p)||'').trim();
+
+  // Build the embedded data object that will be injected into the generated site
+  const savedTexts = gatherTexts();
+  const savedDesign = gatherDesign();
+
+  // Build toys data as JS array literal (no blob URLs)
+  const toysData = toys.filter(t=>!t._blob);
+
+  // Serialize all data to be embedded in the generated file
+  const embeddedData = {
+    v: 3,
+    pass: PASS,
+    orders: orders,
+    toys: toysData,
+    reviews: reviews,
+    nextId: nextId,
+    texts: savedTexts,
+    design: savedDesign,
+    video: currentVideo
+  };
+
+  // Вшиваем Firebase-ключи в файл — клиенты будут автоматически загружать данные
+  const credScript = (FB_URL && FB_SECRET) ? `<script>
+  /* ═══ FIREBASE CREDENTIALS — вшито при экспорте ═══ */
+  window.__FB_URL__    = ${JSON.stringify(FB_URL)};
+  window.__FB_SECRET__ = ${JSON.stringify(FB_SECRET)};
+  window.__TG_TOKEN__  = ${JSON.stringify(TG_TOKEN)};
+  window.__TG_CHAT__   = ${JSON.stringify(TG_CHAT)};
+<\/script>` : '';
+
+  // Build inline CSS overrides from current design
+  let cssOverrides = '';
+  const designProps = {
+    '--rose': cv('--rose'), '--deep-rose': cv('--deep-rose'),
+    '--gold': cv('--gold'), '--bg': cv('--bg'),
+    '--font-fairy': cv('--font-fairy'), '--font-body': cv('--font-body')
+  };
+  const overrideEntries = Object.entries(designProps).filter(([,v])=>v).map(([k,v])=>`  ${k}: ${v};`).join('\n');
+  if(overrideEntries){
+    cssOverrides = `<style>:root{\n${overrideEntries}\n}</style>`;
+  }
+
+  // Build toys gallery HTML
+  function buildGalleryHTML(){
+    return toysData.map((t,idx)=>`
+    <div class="toy-card sr" data-cat="${t.cat}">
+      <div class="card-img" onclick="openLB(${idx})" style="cursor:zoom-in">
+        <img src="${escHtml(t.img)}" alt="${escHtml(t.name)}" loading="lazy" onerror="this.style.background='var(--petal)';this.style.minHeight='200px'">
+        <div class="card-cat-pill">${catLabel[t.cat]||t.cat}</div>
+        ${t.status&&t.status!=='avail'?`<div class="card-status ${statusClass[t.status]}">${statusLabel[t.status]}</div>`:'<div class="card-status status-avail">В наличии</div>'}
+        <div class="card-overlay">
+          <button class="card-order-btn" onclick="event.stopPropagation();openToyOrder('${escJs(t.name)}')">✿ Заказать похожую</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-name">${escHtml(t.name)}</div>
+        <div class="card-sub">${escHtml(t.desc)}</div>
+        <div class="card-price">${escHtml(t.price)}</div>
+      </div>
+    </div>`).join('');
+  }
+
+  // Build reviews HTML
+  function buildReviewsHTML(){
+    if(!reviews.length) return '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--soft);font-family:var(--font-display);font-style:italic">Отзывы скоро появятся здесь ✿</div>';
+    return reviews.map(r=>`
+    <div class="review-card sr">
+      <div class="review-stars">${'★'.repeat(r.stars||5)+'☆'.repeat(5-(r.stars||5))}</div>
+      <div class="review-text">${escHtml(r.text)}</div>
+      <div class="review-author">
+        <div class="review-avatar">${r.emoji||'🌸'}</div>
+        <div><div class="review-name">${escHtml(r.name)}</div><div class="review-city">${escHtml(r.city||'')}</div></div>
+      </div>
+    </div>`).join('');
+  }
+
+  // Build the texts as actual HTML content
+  const T = savedTexts;
+
+  // Build output HTML by taking current document HTML and replacing key parts
+  let out = document.documentElement.outerHTML;
+
+  // Remove Cloudflare script injection if present
+  out = out.replace(/<script[^>]*cloudflare[^>]*><\/script>/gi, '');
+
+  // Inject CSS overrides right before </head>
+  out = out.replace('</head>', cssOverrides + '\n</head>');
+
+  // Replace g-grid content with baked-in gallery
+  out = out.replace(/<div[^>]*id="g-grid"[^>]*>[\s\S]*?<\/div>(?=\s*<\/section>|\s*<div class="gallery-filters)/, 
+    `<div class="gallery-grid" id="g-grid">${buildGalleryHTML()}</div>`);
+
+  // Replace reviews-grid with baked-in reviews
+  out = out.replace(/<div[^>]*id="reviews-grid"[^>]*>[\s\S]*?<\/div>(?=\s*<\/section>)/, 
+    `<div class="reviews-grid" id="reviews-grid">${buildReviewsHTML()}</div>`);
+
+  // Inject embedded data before the main <script> tag
+  // This ensures the script initializes with the saved data
+  const dataScript = `<script>
+  /* ═══ EMBEDDED SITE DATA — auto-generated ═══ */
+  window.__SITE_DATA__ = ${JSON.stringify(embeddedData, null, 2)};
+<\/script>`;
+
+  // Find the last <script> opening tag and inject before it
+  const lastScriptIdx = out.lastIndexOf('<script>');
+  if(lastScriptIdx !== -1){
+    out = out.slice(0,lastScriptIdx) + credScript + '\n' + dataScript + '\n' + out.slice(lastScriptIdx);
+  }
+
+  return '<!DOCTYPE html>\n' + out.replace(/^<!DOCTYPE[^>]*>/i,'').trim();
+}
+
+/* ═══════════════════════════════════════
+   КАСТОМНЫЙ КУРСОР
+═══════════════════════════════════════ */
+const dot=g('cDot'), ring=g('cRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px'});
+(function animCursor(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animCursor)})();
+document.querySelectorAll('a,button,.f-btn,.hdr-btn,.btn-fairy,.btn-outline,.modal-close,.adm-btn,.adm-tab,.adm-nav-item,.adm-back,.adm-download-btn,.float-main-btn,.float-sub-btn,.card-order-btn,.lb-prev,.lb-next,.lb-close,.work-edit').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{dot.style.transform='translate(-50%,-50%) scale(1.6)';ring.style.transform='translate(-50%,-50%) scale(1.6)';ring.style.borderColor='var(--deep-rose)'});
+  el.addEventListener('mouseleave',()=>{dot.style.transform='';ring.style.transform='';ring.style.borderColor='var(--rose)'});
+});
+
+/* ═══════════════════════════════════════
+   ЛЕПЕСТКИ
+═══════════════════════════════════════ */
+const petalColors=['#f9c5c5','#f4a0b0','#e8c5d8','#d4a0c0','#c8e8b4','#f5e0a0','#c0d8f0'];
+const petalShapes=['🌸','🌷','✿','❀','🌺','✦','·','⋆','❋'];
+function spawnPetals(count){
+  count=parseInt(count)||20;
+  const cont=g('petals'); if(!cont) return;
+  const wasHidden=cont.style.display==='none';
+  cont.innerHTML='';
+  for(let i=0;i<count;i++){
+    const p=document.createElement('div'); p.className='petal';
+    p.textContent=petalShapes[Math.floor(Math.random()*petalShapes.length)];
+    p.style.cssText=`color:${petalColors[i%petalColors.length]};font-size:${10+Math.random()*16}px;left:${Math.random()*100}%;bottom:-30px;animation-duration:${12+Math.random()*20}s;animation-delay:${Math.random()*18}s;`;
+    cont.appendChild(p);
+  }
+  if(wasHidden) cont.style.display='none';
+}
+spawnPetals(20);
+function togglePetals(on){ if(g('petals')) g('petals').style.display=on?'block':'none'; schedSave(); }
+function updatePetals(n){ spawnPetals(n); schedSave(); }
+
+/* ═══════════════════════════════════════
+   БЕГУЩАЯ СТРОКА
+═══════════════════════════════════════ */
+(function(){
+  const items=['Авторские игрушки','Ручная работа','Мастерская Чудес','Куклы и обереги','Сказочные персонажи','Шьётся с душой','Доставка по России','Заказ по идее'];
+  const t=g('band-track'); if(!t) return;
+  const html=items.map(s=>`<div class="band-item">${s}<span class="band-sep">✿</span></div>`).join('');
+  t.innerHTML=html+html;
+})();
+
+/* ═══════════════════════════════════════
+   СКРОЛЛ + REVEAL
+═══════════════════════════════════════ */
+window.addEventListener('scroll',()=>{ const h=g('hdr'); if(h) h.classList.toggle('scrolled',scrollY>40); });
+const io=new IntersectionObserver(entries=>{ entries.forEach((e,i)=>{ if(e.isIntersecting) setTimeout(()=>e.target.classList.add('in'),i*80); }); },{threshold:.08});
+function observe(){ document.querySelectorAll('.sr:not(.in),.sr2:not(.in)').forEach(el=>io.observe(el)); }
+observe();
+new MutationObserver(observe).observe(document.body,{childList:true,subtree:true});
+
+/* ═══════════════════════════════════════
+   ДАННЫЕ
+═══════════════════════════════════════ */
+let PASS='mari2025';
+let orders=[];
+let nextId=17;
+let activeFilter='all';
+let currentVideo=null;
+const catLabel={dolls:'Куклы',folk:'Народные',birds:'Птицы',characters:'Персонажи',animals:'Зверята'};
+const statusLabel={avail:'В наличии',order:'Под заказ',sold:'Продано'};
+const statusClass={avail:'status-avail',order:'status-order',sold:'status-sold'};
+
+let toys=[
+  {id:1,name:'Зайка романтик',cat:'animals',desc:'Белый зайка с цветочком в лунном свете',price:'от 1 400 ₽',img:'photo_5276494269944369157_y.jpg',status:'avail'},
+  {id:2,name:'Ворона-модница',cat:'birds',desc:'Элегантная ворона в жёлтом платье',price:'от 1 800 ₽',img:'photo_5276494269944369155_y.jpg',status:'avail'},
+  {id:3,name:'Баба-Яга лесная',cat:'characters',desc:'Мудрая лесная хозяйка с лягушкой',price:'от 2 200 ₽',img:'photo_5276494269944369153_y.jpg',status:'avail'},
+  {id:4,name:'Кукла «Принцесса»',cat:'dolls',desc:'Нежное голубое платье с кружевом',price:'от 1 500 ₽',img:'IMG_3572.jpeg',status:'avail'},
+  {id:5,name:'Кукла-оберег',cat:'folk',desc:'Традиционная с лентами',price:'от 800 ₽',img:'IMG_3571.jpeg',status:'avail'},
+  {id:6,name:'Зайчик-рыболов',cat:'characters',desc:'Рыжебородый в шляпке с удочкой',price:'от 1 200 ₽',img:'IMG_3570.jpeg',status:'order'},
+  {id:7,name:'Ворона красавица',cat:'birds',desc:'В алом с золотым кружевом',price:'от 1 800 ₽',img:'IMG_3565.jpeg',status:'avail'},
+  {id:8,name:'Домовой банный',cat:'characters',desc:'С веником, белобородый мудрец',price:'от 2 500 ₽',img:'IMG_3563.jpeg',status:'order'},
+  {id:9,name:'Зайка в сарафане',cat:'animals',desc:'С морковкой, цветочный сарафан',price:'от 1 600 ₽',img:'IMG_3560.jpeg',status:'avail'},
+  {id:10,name:'Мышонок в худи',cat:'animals',desc:'Белый в фиолетовой кофте',price:'от 1 200 ₽',img:'IMG_3561.jpeg',status:'avail'},
+  {id:11,name:'Кот длинноногий',cat:'animals',desc:'Серый длинноногий — настоящий кот',price:'от 1 500 ₽',img:'IMG_3558.jpeg',status:'sold'},
+  {id:12,name:'Кукла-оберег зелёная',cat:'folk',desc:'Народная традиционная кукла',price:'от 900 ₽',img:'IMG_3556.jpeg',status:'avail'},
+];
+
+let reviews=[
+  {id:1,name:'Анна',city:'Москва',stars:5,text:'Заказала Бабу-Ягу для дочери — она в полном восторге! Качество потрясающее, каждая деталь сделана с душой.',emoji:'🌷'},
+  {id:2,name:'Светлана',city:'Санкт-Петербург',stars:5,text:'Мари создала невероятную куколку по моему описанию. Очень быстро, аккуратно упаковала. Рекомендую!',emoji:'🌸'},
+  {id:3,name:'Елена',city:'Новосибирск',stars:5,text:'Заказывала ворону в подарок — и не пожалела! Игрушка живая, харизматичная. Спасибо огромное, Мари!',emoji:'✿'},
+];
+
+/* ═══ ЗАГРУЗКА — приоритет: облако > embedded > localStorage ═══ */
+if(window.__SITE_DATA__){
+  applyLoadedData(window.__SITE_DATA__);
+  try{ localStorage.setItem(STORE_KEY, JSON.stringify({...window.__SITE_DATA__,v:3})); }catch(e){}
+} else {
+  loadAll();
+}
+// После загрузки — синхронизировать с облаком если настроено
+setTimeout(cloudAutoLoad, 800);
+
+function loadAll(){
+  try {
+    const raw=localStorage.getItem(STORE_KEY);
+    if(!raw) return;
+    const data=JSON.parse(raw);
+    if(!data||data.v!==3) return;
+    if(data.pass) PASS=data.pass;
+    if(Array.isArray(data.orders)) orders=data.orders;
+    if(Array.isArray(data.toys)&&data.toys.length){ toys=data.toys; nextId=data.nextId||100; }
+    if(Array.isArray(data.reviews)) reviews=data.reviews;
+    if(data.texts){
+      const t=data.texts;
+      ['site-logo-name','site-logo-sub','hero-fairy','hero-badge','hero-em','hero-desc',
+       'stat1n','stat1l','stat2n','stat2l','stat3n','stat3l','hq','hm',
+       'promo-title','promo-sub','aq','ac','mn','mr','chat-intro','foot-name','fcopy','cso'
+      ].forEach(id=>{ if(t[id]!==undefined){const el=g(id); if(el) el.textContent=t[id];} });
+      ['ap1','ap2','ap3'].forEach(id=>{
+        const key='_html_'+id;
+        if(t[key]!==undefined){const el=g(id); if(el) el.innerHTML=t[key];}
+      });
+      if(t._ctgText&&g('ctg')){g('ctg').textContent=t._ctgText; if(t._ctgHref) g('ctg').href=t._ctgHref;}
+      if(t._cemText&&g('cem')){g('cem').textContent=t._cemText; if(t._cemHref) g('cem').href=t._cemHref;}
+      if(t._title) document.title=t._title;
+    }
+    if(data.design){
+      const d=data.design, root=document.documentElement;
+      if(d.rose) root.style.setProperty('--rose',d.rose);
+      if(d.deepRose) root.style.setProperty('--deep-rose',d.deepRose);
+      if(d.gold) root.style.setProperty('--gold',d.gold);
+      if(d.bg) root.style.setProperty('--bg',d.bg);
+      if(d.fontFairy&&d.fontFairy.trim()) root.style.setProperty('--font-fairy',d.fontFairy);
+      if(d.fontBody&&d.fontBody.trim()) root.style.setProperty('--font-body',d.fontBody);
+      if(d.petalsOn===false&&g('petals')) g('petals').style.display='none';
+      if(d.petalsCount) spawnPetals(d.petalsCount);
+    }
+    if(data.video&&data.video.src&&data.video.type==='embed'){
+      currentVideo=data.video;
+      setPromoIframe(data.video.src,data.video.label,false);
+    }
+  } catch(e){ console.warn('loadAll:', e); }
+}
+
+/* ═══════════════════════════════════════
+   ГАЛЕРЕЯ (публичная)
+═══════════════════════════════════════ */
+let lbIndex=0;
+let lbList=[];
+
+function renderGallery(f){
+  activeFilter=f;
+  let list=f==='all'?toys:toys.filter(t=>t.cat===f);
+  lbList=list;
+  const grid=g('g-grid'); if(!grid) return;
+  grid.innerHTML=list.map((t,idx)=>`
+    <div class="toy-card sr" data-cat="${t.cat}">
+      <div class="card-img" onclick="openLB(${idx})" style="cursor:zoom-in">
+        <img src="${escHtml(t.img)}" alt="${escHtml(t.name)}" loading="lazy" onerror="this.style.background='var(--petal)';this.style.minHeight='200px'">
+        <div class="card-cat-pill">${catLabel[t.cat]||t.cat}</div>
+        ${t.status&&t.status!=='avail'?`<div class="card-status ${statusClass[t.status]}">${statusLabel[t.status]}</div>`:'<div class="card-status status-avail">В наличии</div>'}
+        <div class="card-overlay">
+          <button class="card-order-btn" onclick="event.stopPropagation();openToyOrder('${escJs(t.name)}')">✿ Заказать похожую</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-name">${escHtml(t.name)}</div>
+        <div class="card-sub">${escHtml(t.desc)}</div>
+        <div class="card-price">${escHtml(t.price)}</div>
+      </div>
+    </div>
+  `).join('');
+}
+document.querySelectorAll('.f-btn').forEach(btn=>{
+  btn.addEventListener('click',function(){
+    document.querySelectorAll('.f-btn').forEach(b=>b.classList.remove('on'));
+    this.classList.add('on');
+    renderGallery(this.dataset.f);
+  });
+});
+renderGallery('all');
+
+/* ═══════════════════════════════════════
+   ЛАЙТБОКС
+═══════════════════════════════════════ */
+function openLB(idx){
+  lbIndex=idx; showLBImage();
+  const lb=g('lightbox'); if(lb) lb.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLB(){
+  const lb=g('lightbox'); if(lb) lb.classList.remove('open');
+  document.body.style.overflow='';
+}
+function lbNav(dir){
+  lbIndex=(lbIndex+dir+lbList.length)%lbList.length;
+  showLBImage();
+}
+function showLBImage(){
+  const t=lbList[lbIndex]; if(!t) return;
+  const img=g('lb-img'); if(img){img.src=t.img; img.alt=t.name;}
+  const cap=g('lb-cap'); if(cap) cap.textContent=t.name+' — '+t.price;
+  const cnt=g('lb-counter'); if(cnt) cnt.textContent=(lbIndex+1)+' / '+lbList.length;
+}
+document.addEventListener('keydown',e=>{
+  const lb=g('lightbox'); if(!lb||!lb.classList.contains('open')) return;
+  if(e.key==='Escape') closeLB();
+  else if(e.key==='ArrowLeft') lbNav(-1);
+  else if(e.key==='ArrowRight') lbNav(1);
+});
+const lbEl=g('lightbox');
+if(lbEl) lbEl.addEventListener('click',e=>{ if(e.target===lbEl) closeLB(); });
+
+/* ═══════════════════════════════════════
+   ОТЗЫВЫ
+═══════════════════════════════════════ */
+function renderReviews(){
+  const grid=g('reviews-grid'); if(!grid) return;
+  if(!reviews.length){
+    grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--soft);font-family:var(--font-display);font-style:italic">Отзывы скоро появятся здесь ✿</div>';
+    return;
+  }
+  grid.innerHTML=reviews.map(r=>`
+    <div class="review-card sr">
+      <div class="review-stars">${'★'.repeat(r.stars||5)+'☆'.repeat(5-(r.stars||5))}</div>
+      <div class="review-text">${escHtml(r.text)}</div>
+      <div class="review-author">
+        <div class="review-avatar">${r.emoji||'🌸'}</div>
+        <div><div class="review-name">${escHtml(r.name)}</div><div class="review-city">${escHtml(r.city||'')}</div></div>
+      </div>
+    </div>
+  `).join('');
+}
+renderReviews();
+
+/* ═══════════════════════════════════════
+   ПЛАВАЮЩАЯ КНОПКА
+═══════════════════════════════════════ */
+let floatOpen=false;
+function toggleFloat(){
+  floatOpen=!floatOpen;
+  const s=g('floatSubs'); if(s) s.classList.toggle('open',floatOpen);
+  const btn=g('floatBtn'); if(btn) btn.style.transform=floatOpen?'rotate(45deg)':'';
+}
+function closeFloat(){
+  floatOpen=false;
+  const s=g('floatSubs'); if(s) s.classList.remove('open');
+  const btn=g('floatBtn'); if(btn) btn.style.transform='';
+}
+function updateFloatTg(val){
+  const btn=g('float-tg-btn'); if(btn) btn.href='https://t.me/'+val.replace('@','');
+}
+document.addEventListener('click',e=>{
+  const cta=g('floatCta');
+  if(floatOpen&&cta&&!cta.contains(e.target)) closeFloat();
+});
+
+/* ═══════════════════════════════════════
+   МОДАЛЬНЫЕ ОКНА
+═══════════════════════════════════════ */
+function closeOvr(id){ const el=g(id); if(el) el.classList.remove('open'); }
+document.querySelectorAll('.overlay').forEach(o=>{
+  o.addEventListener('click',e=>{ if(e.target===o) o.classList.remove('open'); });
+});
+function openToyOrder(name){
+  const sub=g('ovr-sub'); if(sub) sub.textContent='Похожая на: '+name;
+  const ov=g('ovr-order'); if(ov) ov.classList.add('open');
+}
+function submitMO(){
+  const n=(g('mon')||{}).value.trim(), c=(g('moc')||{}).value.trim();
+  if(!n||!c){ alert('Пожалуйста, заполните имя и контакт.'); return; }
+  saveOrder({name:n,contact:c,type:'Из галереи',comment:g('ovr-sub')?g('ovr-sub').textContent:''});
+  closeOvr('ovr-order');
+  showToast('✿ Заявка отправлена! Мари свяжется с вами.');
+  ['mon','moc','mom'].forEach(id=>{ const el=g(id); if(el) el.value=''; });
+}
+
+/* ═══════════════════════════════════════
+   ФОРМА ЗАКАЗА
+═══════════════════════════════════════ */
+function onFileChange(inp){
+  const lbl=g('file-lbl'); if(!lbl) return;
+  const name=inp.files[0]?inp.files[0].name:'Прикрепить изображение';
+  lbl.innerHTML=`<input type="file" class="file-inp" accept="image/*" onchange="onFileChange(this)">📎 &nbsp;${escHtml(name)}`;
+}
+function submitOrder(e){
+  e.preventDefault();
+  const n=(g('fn')||{}).value.trim(), t=(g('ft')||{}).value;
+  if(!n||!t) return;
+  saveOrder({name:n,contact:(g('fp')||{}).value||(g('fe')||{}).value||'',type:t,comment:(g('fc')||{}).value||''});
+  showToast('✿ Заявка отправлена! Мари свяжется с вами.');
+  e.target.reset();
+  const lbl=g('file-lbl'); if(lbl) lbl.innerHTML='<input type="file" class="file-inp" accept="image/*" onchange="onFileChange(this)">📎 &nbsp;Прикрепить изображение';
+}
+function saveOrder(d){
+  const o={id:Date.now(),...d,time:new Date().toLocaleString('ru'),done:false};
+  orders.push(o);
+  schedSave(); renderOrders();
+  // Telegram уведомление
+  if(TG_TOKEN && TG_CHAT){
+    const msg='🛍 <b>Новый заказ!</b>\n'
+      +'👤 <b>Имя:</b> '+escHtml(o.name||'—')+'\n'
+      +'📱 <b>Контакт:</b> '+escHtml(o.contact||'—')+'\n'
+      +'📦 <b>Тип:</b> '+escHtml(o.type||'—')+'\n'
+      +(o.comment?'💬 <b>Пожелания:</b> '+escHtml(o.comment)+'\n':'')
+      +'🕐 <b>Время:</b> '+o.time;
+    tgSend(msg);
+  }
+  // Сохранить в облако сразу
+  if(FB_URL && FB_SECRET){
+    const data={v:3,ts:Date.now(),pass:PASS,orders:orders,
+      toys:toys.filter(t=>!t._blob),reviews:reviews,nextId:nextId,
+      texts:gatherTexts(),design:gatherDesign(),video:currentVideo};
+    cloudPush(data);
+  }
+}
+
+/* ═══════════════════════════════════════
+   ЧАТ
+═══════════════════════════════════════ */
+const replies=['Конечно! Расскажите подробнее — создам именно то, что вы хотите ✿','Сроки обычно 7–14 дней. По желанию присылаю фото в процессе 🌸','Принимаю заказы! Заполните форму выше или напишите мне в Telegram.','Стоимость зависит от сложности персонажа. Давайте обсудим детали!','Отправляю по всей России — Почтой или СДЭК. Упакую с любовью ✿','Да! Могу сделать любой цвет, размер, добавить особые детали.'];
+let rIdx=0;
+function chatSend(){
+  const inp=g('ci'); if(!inp) return;
+  const txt=inp.value.trim(); if(!txt) return;
+  const box=g('chat-msgs'); if(!box) return;
+  const um=document.createElement('div'); um.className='msg msg-user'; um.textContent=txt;
+  box.appendChild(um); inp.value=''; box.scrollTop=box.scrollHeight;
+  setTimeout(()=>{ const rm=document.createElement('div'); rm.className='msg msg-bot'; rm.textContent=replies[rIdx++%replies.length]; box.appendChild(rm); box.scrollTop=box.scrollHeight; },900);
+}
+
+/* ═══════════════════════════════════════
+   ТОСТ
+═══════════════════════════════════════ */
+function showToast(msg){
+  const t=g('toast'); if(!t) return;
+  t.textContent=msg||'✿ Готово!'; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),5000);
+}
+
+/* ═══════════════════════════════════════
+   АВТОРИЗАЦИЯ
+═══════════════════════════════════════ */
+(function(){
+  if(new URLSearchParams(window.location.search).get('master')==='chudes'){
+    const show=()=>{ const ov=g('ovr-login'); if(ov) ov.classList.add('open'); setTimeout(()=>{ const pw=g('apw'); if(pw) pw.focus(); },200); };
+    if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',()=>setTimeout(show,400));
+    else setTimeout(show,400);
+  }
+})();
+function tryLogin(){
+  const pw=g('apw'); if(!pw) return;
+  if(pw.value===PASS){
+    closeOvr('ovr-login'); pw.value='';
+    const err=g('aerr'); if(err) err.style.display='none';
+    openAdm();
+  } else {
+    const err=g('aerr'); if(err) err.style.display='block';
+    pw.value=''; setTimeout(()=>pw.focus(),50);
+  }
+}
+function openAdm(){
+  const ap=g('admin-panel'); if(ap) ap.classList.add('open');
+  renderOrders(); renderWorks(); renderReviewsAdm(); updateDashboard();
+  setTimeout(syncAdminFields,150);
+  setTimeout(loadCloudCreds,200);
+}
+function closeAdm(){ const ap=g('admin-panel'); if(ap) ap.classList.remove('open'); }
+
+/* ═══════════════════════════════════════
+   ТАБЫ ПАНЕЛИ
+═══════════════════════════════════════ */
+function admTab(i){
+  document.querySelectorAll('.adm-tab').forEach((b,j)=>b.classList.toggle('on',j===i));
+  document.querySelectorAll('.adm-pane').forEach((p,j)=>p.classList.toggle('on',j===i));
+}
+function setNavActive(el){
+  document.querySelectorAll('.adm-nav-item').forEach(n=>n.classList.remove('active'));
+  el.classList.add('active');
+}
+
+/* ═══════════════════════════════════════
+   ДАШБОРД
+═══════════════════════════════════════ */
+function updateDashboard(){
+  const dn=g('dash-new'),dt=g('dash-total'),dw=g('dash-works'),da=g('dash-avail');
+  if(dn) dn.textContent=orders.filter(o=>!o.done).length;
+  if(dt) dt.textContent=orders.length;
+  if(dw) dw.textContent=toys.length;
+  if(da) da.textContent=toys.filter(t=>t.status==='avail'||!t.status).length;
+}
+
+/* ═══════════════════════════════════════
+   ЗАЯВКИ
+═══════════════════════════════════════ */
+let ordersFilter='all';
+function filterOrders(f,btn){
+  ordersFilter=f;
+  document.querySelectorAll('.ord-f-btn').forEach(b=>b.classList.remove('on'));
+  if(btn) btn.classList.add('on');
+  renderOrders();
+}
+function renderOrders(){
+  updateDashboard();
+  const el=g('olist'); if(!el) return;
+  let list=orders.slice().reverse();
+  if(ordersFilter==='new') list=list.filter(o=>!o.done);
+  else if(ordersFilter==='done') list=list.filter(o=>o.done);
+  if(!list.length){
+    el.innerHTML='<p style="color:var(--soft);font-size:.88rem;line-height:1.8">'+(orders.length?'Нет заявок с таким фильтром.':'Заявок пока нет.')+'</p>';
+    return;
+  }
+  el.innerHTML=list.map(o=>`
+    <div class="ord-card">
+      <div>
+        <div class="ord-name">${escHtml(o.name)}</div>
+        <div class="ord-det">
+          <b>Контакт:</b> ${escHtml(o.contact||'—')} &nbsp;|&nbsp;
+          <b>Тип:</b> ${escHtml(o.type||'—')} &nbsp;|&nbsp;
+          <b>Время:</b> ${escHtml(o.time)}
+          ${o.comment?'<br><b>Пожелания:</b> '+escHtml(o.comment):''}
+        </div>
+        <button class="ord-done-btn" onclick="toggleDone(${o.id})">${o.done?'↩ Снять':'✓ Выполнен'}</button>
+      </div>
+      <span class="ord-badge ${o.done?'b-done':'b-new'}">${o.done?'Выполнен':'Новая'}</span>
+    </div>
+  `).join('');
+}
+function toggleDone(id){
+  const o=orders.find(x=>x.id===id);
+  if(o){ o.done=!o.done; renderOrders(); schedSave(); }
+}
+function clearDoneOrders(){
+  const cnt=orders.filter(o=>o.done).length;
+  if(!cnt){ showToast('Нет выполненных заявок.'); return; }
+  if(!confirm(`Удалить ${cnt} выполненных заявок?`)) return;
+  orders=orders.filter(o=>!o.done);
+  renderOrders(); schedSave();
+  showToast(`🗑 Удалено ${cnt} заявок.`);
+}
+function exportCSV(){
+  if(!orders.length){ showToast('⚠ Заявок для экспорта нет.'); return; }
+  const bom='\uFEFF';
+  const header='№,Имя,Контакт,Тип заказа,Пожелания,Время,Статус\n';
+  const rows=orders.map((o,i)=>[i+1,
+    '"'+(o.name||'').replace(/"/g,'""')+'"',
+    '"'+(o.contact||'').replace(/"/g,'""')+'"',
+    '"'+(o.type||'').replace(/"/g,'""')+'"',
+    '"'+(o.comment||'').replace(/"/g,'""')+'"',
+    '"'+(o.time||'').replace(/"/g,'""')+'"',
+    o.done?'Выполнен':'Новая'
+  ].join(',')).join('\n');
+  const blob=new Blob([bom+header+rows],{type:'text/csv;charset=utf-8'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a'); a.href=url; a.download='zaявки-masterskaya.csv'; a.click();
+  URL.revokeObjectURL(url);
+  showToast('📥 Заявки экспортированы в CSV!');
+}
+
+/* ═══════════════════════════════════════
+   РЕДАКТИРОВАНИЕ КАРТОЧЕК ТОВАРОВ
+═══════════════════════════════════════ */
+let editingToyId=null;
+
+function openEditWork(id){
+  const toy=toys.find(t=>t.id===id); if(!toy) return;
+  editingToyId=id;
+  const sv=(elId,val)=>{ const el=g(elId); if(el) el.value=val||''; };
+  sv('edit-name', toy.name);
+  sv('edit-price', toy.price);
+  sv('edit-desc', toy.desc);
+  sv('edit-img', toy.img);
+  // Set category
+  const catEl=g('edit-cat'); if(catEl) catEl.value=toy.cat||'dolls';
+  // Set status
+  const stEl=g('edit-status'); if(stEl) stEl.value=toy.status||'avail';
+  // Update preview image
+  const prev=g('edit-preview-img'); if(prev){ prev.src=toy.img; prev.onerror=()=>prev.style.display='none'; prev.onload=()=>prev.style.display='block'; }
+  const modal=g('edit-modal'); if(modal) modal.classList.add('open');
+}
+
+function updateEditPreview(src){
+  const prev=g('edit-preview-img'); if(!prev) return;
+  prev.src=src;
+  prev.style.display='block';
+}
+
+function closeEditModal(){
+  const modal=g('edit-modal'); if(modal) modal.classList.remove('open');
+  editingToyId=null;
+}
+
+function saveEditWork(){
+  if(!editingToyId) return;
+  const toy=toys.find(t=>t.id===editingToyId);
+  if(!toy){ closeEditModal(); return; }
+  const name=(g('edit-name')||{}).value.trim();
+  if(!name){ alert('Введите название'); return; }
+  toy.name  = name;
+  toy.price = (g('edit-price')||{}).value.trim()||toy.price;
+  toy.desc  = (g('edit-desc')||{}).value.trim();
+  toy.img   = (g('edit-img')||{}).value.trim()||toy.img;
+  toy.cat   = (g('edit-cat')||{}).value||toy.cat;
+  toy.status= (g('edit-status')||{}).value||toy.status;
+  closeEditModal();
+  renderWorks(); renderGallery(activeFilter); updateDashboard(); schedSave();
+  showToast('✿ Карточка обновлена!');
+}
+
+function deleteEditWork(){
+  if(!editingToyId) return;
+  const toy=toys.find(t=>t.id===editingToyId);
+  if(!toy||!confirm(`Удалить "${toy.name}" из галереи?`)) return;
+  toys=toys.filter(t=>t.id!==editingToyId);
+  closeEditModal();
+  renderWorks(); renderGallery(activeFilter); updateDashboard(); schedSave();
+  showToast('Работа удалена из галереи.');
+}
+
+// Close edit modal on background click
+const editModalEl=g('edit-modal');
+if(editModalEl) editModalEl.addEventListener('click',e=>{ if(e.target===editModalEl) closeEditModal(); });
+
+/* ═══════════════════════════════════════
+   ГАЛЕРЕЯ В ПАНЕЛИ (с кнопкой редакт.)
+═══════════════════════════════════════ */
+function filterWorks(q){
+  const grid=g('works-grid'); if(!grid) return;
+  const query=q.toLowerCase();
+  grid.querySelectorAll('.work-card').forEach(card=>{
+    const nm=card.querySelector('.work-name');
+    card.style.display=(!query||nm&&nm.textContent.toLowerCase().includes(query))?'':'none';
+  });
+}
+function renderWorks(){
+  const el=g('works-grid'); if(!el) return;
+  el.innerHTML=toys.map(t=>`
+    <div class="work-card">
+      <img src="${escHtml(t.img)}" alt="${escHtml(t.name)}" onerror="this.style.background='var(--petal)';this.style.minHeight='120px'">
+      <button class="work-del" onclick="delWork(${t.id})" title="Удалить">✕</button>
+      <button class="work-edit" onclick="openEditWork(${t.id})" title="Редактировать">✏</button>
+      <div class="work-info">
+        <div class="work-name">${escHtml(t.name)}</div>
+        <div class="work-price">${escHtml(t.price)}</div>
+        <div style="font-size:.6rem;margin-top:2px;font-weight:600;color:${t.status==='avail'||!t.status?'var(--sage)':t.status==='sold'?'var(--rose)':'var(--gold)'}">${statusLabel[t.status||'avail']}</div>
+      </div>
+    </div>
+  `).join('');
+}
+function delWork(id){
+  if(!confirm('Удалить эту работу из галереи?')) return;
+  toys=toys.filter(t=>t.id!==id);
+  renderWorks(); renderGallery(activeFilter); updateDashboard(); schedSave();
+  showToast('Работа удалена из галереи.');
+}
+function addWork(){
+  const name=(g('a-name')||{}).value;
+  if(!name||!name.trim()){ alert('Введите название'); return; }
+  toys.push({
+    id:nextId++, name:name.trim(),
+    cat:(g('a-cat')||{}).value||'dolls',
+    desc:(g('a-desc')||{}).value.trim(),
+    price:(g('a-price')||{}).value.trim()||'по запросу',
+    img:(g('a-img')||{}).value.trim()||'IMG_3572.jpeg',
+    status:(g('a-status')||{}).value||'avail'
+  });
+  renderWorks(); renderGallery(activeFilter); updateDashboard(); schedSave();
+  ['a-name','a-price','a-desc','a-img'].forEach(id=>{ const el=g(id); if(el) el.value=''; });
+  showToast('✿ Новая работа добавлена в галерею!');
+}
+
+/* ═══════════════════════════════════════
+   ВИДЕО
+═══════════════════════════════════════ */
+function handleVideoUpload(inp){
+  if(!inp.files||!inp.files[0]) return;
+  const url=URL.createObjectURL(inp.files[0]);
+  const cont=g('promo-video-container'); if(!cont) return;
+  cont.innerHTML=`<video controls autoplay muted loop playsinline style="width:100%;border-radius:24px;display:block"><source src="${url}"></video>`;
+  addVideoToList(inp.files[0].name,'file');
+  currentVideo=null; showToast('🎬 Видео загружено!');
+}
+function setVideoURL(){
+  const inp=g('video-url-inp'); if(!inp||!inp.value.trim()){ alert('Введите ссылку'); return; }
+  const url=inp.value.trim(); let embedUrl=url, label='Видео';
+  if(url.includes('youtube.com/watch')){ try{const vid=new URL(url).searchParams.get('v'); if(vid){embedUrl=`https://www.youtube.com/embed/${vid}`;label='YouTube';}}catch(e){} }
+  else if(url.includes('youtu.be/')){ const vid=url.split('/').pop().split('?')[0]; embedUrl=`https://www.youtube.com/embed/${vid}`;label='YouTube'; }
+  else if(url.includes('vk.com/video')){ label='VK Video'; }
+  setPromoIframe(embedUrl,label,true);
+  showToast('🎬 Видео добавлено!');
+}
+function setPromoIframe(src,label,doSave){
+  const cont=g('promo-video-container'); if(!cont) return;
+  cont.innerHTML=`<iframe src="${src}" style="width:100%;aspect-ratio:16/9;border:none;border-radius:24px;display:block" allowfullscreen></iframe>`;
+  addVideoToList(label||'Видео','embed');
+  if(doSave){ currentVideo={type:'embed',src,label}; schedSave(); }
+}
+function addVideoToList(name,type){
+  const list=g('video-list'); if(!list) return;
+  list.innerHTML=`<div class="video-item"><div class="video-thumb">🎬</div><div class="video-info"><div class="v-name">${escHtml(name)}</div><div class="v-type">${type==='embed'?'Встроенное':'Файл'}</div></div><div class="video-actions"><button class="adm-btn adm-btn-sm adm-btn-danger" onclick="removeVideo()">✕</button></div></div>`;
+}
+function removeVideo(){
+  const cont=g('promo-video-container'); if(!cont) return;
+  cont.innerHTML='<div class="promo-video-placeholder"><div class="promo-play-btn">▶</div><p>Промо-видео</p><small>Загрузите видео через Панель Мастера</small></div>';
+  const list=g('video-list'); if(list) list.innerHTML='';
+  currentVideo=null; schedSave(); showToast('Видео удалено.');
+}
+
+/* ═══════════════════════════════════════
+   ФОТОГРАФИИ
+═══════════════════════════════════════ */
+function replaceHeroImg(inp,idx){
+  if(!inp.files||!inp.files[0]) return;
+  const url=URL.createObjectURL(inp.files[0]);
+  const ids=['hero-img1','hero-img2','hero-img3'];
+  const el=g(ids[idx]); if(el) el.src=url;
+  const prev=g('hi-prev'+idx); if(prev) prev.src=url;
+  showToast('✿ Фото обновлено!');
+}
+function replaceAboutImg(inp){
+  if(!inp.files||!inp.files[0]) return;
+  const url=URL.createObjectURL(inp.files[0]);
+  const ph=g('about-photo'); if(ph) ph.src=url;
+  const pv=g('about-prev'); if(pv) pv.src=url;
+  showToast('✿ Фото обновлено!');
+}
+function addGalleryImgs(inp){
+  if(!inp.files||!inp.files.length) return;
+  const preview=g('gallery-preview'); if(!preview) return;
+  Array.from(inp.files).forEach(file=>{
+    const url=URL.createObjectURL(file);
+    const cid=nextId++;
+    const div=document.createElement('div'); div.className='img-preview-item';
+    div.innerHTML=`<img src="${url}" style="width:100%;height:100%;object-fit:cover"><button class="img-preview-del" onclick="this.parentElement.remove();removeGalleryToy(${cid})">✕</button>`;
+    preview.appendChild(div);
+    toys.push({id:cid,name:file.name.replace(/\.[^.]+$/,''),cat:'dolls',desc:'',price:'по запросу',img:url,status:'avail',_blob:true});
+  });
+  renderGallery(activeFilter); renderWorks(); updateDashboard();
+  showToast(`✿ Добавлено ${inp.files.length} фото!`);
+}
+function removeGalleryToy(id){ toys=toys.filter(t=>t.id!==id); renderGallery(activeFilter); renderWorks(); updateDashboard(); schedSave(); }
+
+/* ═══════════════════════════════════════
+   ДИЗАЙН
+═══════════════════════════════════════ */
+function applyColor(prop,val){ document.documentElement.style.setProperty(prop,val); schedSave(); }
+function applyFontSize(sel,val){ document.querySelectorAll(sel).forEach(el=>el.style.fontSize=val); schedSave(); }
+function applyBtnPad(val){ document.querySelectorAll('.btn-fairy,.submit-btn,.hdr-btn').forEach(el=>{ el.style.paddingTop=val+'px'; el.style.paddingBottom=val+'px'; }); schedSave(); }
+function applyCardRadius(val){ document.querySelectorAll('.toy-card,.form-card,.step,.contact-card,.chat-widget,.review-card').forEach(el=>el.style.borderRadius=val+'px'); schedSave(); }
+
+const themes={
+  rose:{'--rose':'#d4778a','--deep-rose':'#b5566a','--gold':'#d4a96a','--petal':'#f9e8e8','--bg':'#fdf6f0'},
+  lavender:{'--rose':'#9b7ec8','--deep-rose':'#7a5caa','--gold':'#d4a96a','--petal':'#f0e8f8','--bg':'#faf8fc'},
+  sage:{'--rose':'#7aaa7a','--deep-rose':'#5a8a5a','--gold':'#c4aa6a','--petal':'#e8f4e8','--bg':'#f8fcf8'},
+  gold:{'--rose':'#c4944a','--deep-rose':'#a47030','--gold':'#d4c46a','--petal':'#fdf0d8','--bg':'#fdfaf0'},
+  teal:{'--rose':'#5aaabb','--deep-rose':'#3a8898','--gold':'#d4a96a','--petal':'#e0f4f8','--bg':'#f4fafb'},
+};
+function applyTheme(name){ const t=themes[name]; if(!t) return; Object.entries(t).forEach(([k,v])=>document.documentElement.style.setProperty(k,v)); setTimeout(syncAdminFields,50); schedSave(); showToast('🎨 Тема изменена!'); }
+
+const loadedFonts=new Set(['Great Vibes','Dancing Script','Pacifico','Nunito','Lora','Mulish','Cormorant Garamond']);
+function loadGFont(f){ if(loadedFonts.has(f)) return; loadedFonts.add(f); const lk=document.createElement('link'); lk.rel='stylesheet'; lk.href=`https://fonts.googleapis.com/css2?family=${f.replace(/ /g,'+')}&display=swap`; document.head.appendChild(lk); }
+function applyFairyFont(family,el){ loadGFont(family); document.documentElement.style.setProperty('--font-fairy',`'${family}', cursive`); if(el){ const c=el.closest('.adm-card'); if(c) c.querySelectorAll('.font-option').forEach(o=>o.classList.remove('active')); el.classList.add('active'); } schedSave(); showToast('✿ Шрифт изменён!'); }
+function applyBodyFont(family,el){ loadGFont(family); document.documentElement.style.setProperty('--font-body',`'${family}', sans-serif`); if(el){ const c=el.closest('.adm-card'); if(c) c.querySelectorAll('.font-option').forEach(o=>o.classList.remove('active')); el.classList.add('active'); } schedSave(); showToast('✿ Шрифт изменён!'); }
+
+/* ═══════════════════════════════════════
+   ТЕКСТЫ
+═══════════════════════════════════════ */
+function syncText(id,val){ const el=g(id); if(el) el.textContent=val; schedSave(); }
+function syncInnerHTML(id,val){ const el=g(id); if(el) el.innerHTML=val; schedSave(); }
+function syncTextQuote(id,val){ const el=g(id); if(el) el.textContent='\u00ab'+val+'\u00bb'; schedSave(); }
+function syncNameAll(name){
+  const hm=g('hm'); if(hm) hm.textContent=`— ${name}, мастер`;
+  const ac=g('ac'); if(ac) ac.textContent=`— ${name}`;
+  const fc=g('fcopy'); if(fc) fc.textContent=`© 2025 · ${name} · Все права защищены`;
+  schedSave();
+}
+function updateTg(val){
+  const el=g('ctg'); if(!el) return;
+  el.textContent='@'+val; el.href='https://t.me/'+val.replace('@','');
+  updateFloatTg(val); schedSave();
+}
+function updateEmail(val){ const el=g('cem'); if(!el) return; el.textContent=val; el.href='mailto:'+val; schedSave(); }
+
+/* ═══════════════════════════════════════
+   ПРЯМОЕ РЕДАКТИРОВАНИЕ
+═══════════════════════════════════════ */
+let liveEditOn=false;
+function toggleLiveEdit(){
+  liveEditOn=!liveEditOn;
+  document.body.classList.toggle('edit-mode',liveEditOn);
+  const badge=g('liveEditBadge'); if(badge) badge.classList.toggle('visible',liveEditOn);
+  document.querySelectorAll('[data-editable]').forEach(el=>{ el.contentEditable=liveEditOn?'true':'false'; });
+  if(liveEditOn){ const ap=g('admin-panel'); if(ap&&ap.classList.contains('open')) closeAdm(); }
+  showToast(liveEditOn?'✏️ Кликайте на текст для редактирования':'✓ Режим редактирования выключен');
+}
+document.addEventListener('blur',e=>{ if(liveEditOn&&e.target&&e.target.hasAttribute('data-editable')) schedSave(); },true);
+
+/* ═══════════════════════════════════════
+   ОТЗЫВЫ (панель)
+═══════════════════════════════════════ */
+function renderReviewsAdm(){
+  const el=g('reviews-adm-list'); if(!el) return;
+  if(!reviews.length){ el.innerHTML='<p style="color:var(--soft);font-size:.82rem">Отзывов пока нет.</p>'; return; }
+  el.innerHTML=reviews.map(r=>`
+    <div class="review-adm-card">
+      <div>
+        <div class="review-adm-stars">${'★'.repeat(r.stars||5)}</div>
+        <div style="font-size:.78rem;font-weight:600;margin-bottom:3px">${escHtml(r.name)}${r.city?' · '+escHtml(r.city):''}</div>
+        <div class="review-adm-text">${escHtml(r.text)}</div>
+      </div>
+      <button class="adm-btn adm-btn-sm adm-btn-danger" onclick="delReview(${r.id})">✕</button>
+    </div>
+  `).join('');
+}
+function addReview(){
+  const name=(g('rv-name')||{}).value.trim();
+  const text=(g('rv-text')||{}).value.trim();
+  if(!name||!text){ alert('Заполните имя и текст отзыва.'); return; }
+  reviews.push({id:Date.now(),name,city:'',stars:parseInt((g('rv-stars')||{}).value)||5,text,emoji:(g('rv-emoji')||{}).value.trim()||'🌸'});
+  renderReviews(); renderReviewsAdm(); schedSave();
+  ['rv-name','rv-text'].forEach(id=>{ const el=g(id); if(el) el.value=''; });
+  showToast('✿ Отзыв добавлен!');
+}
+function delReview(id){
+  if(!confirm('Удалить этот отзыв?')) return;
+  reviews=reviews.filter(r=>r.id!==id);
+  renderReviews(); renderReviewsAdm(); schedSave();
+  showToast('Отзыв удалён.');
+}
+
+/* ═══════════════════════════════════════
+   СМЕНА ПАРОЛЯ
+═══════════════════════════════════════ */
+function changePwd(){
+  const old=(g('s-old-pw')||{}).value||'';
+  const np=(g('s-pw')||{}).value||'';
+  const np2=(g('s-pw2')||{}).value||'';
+  if(old!==PASS){ showToast('⚠ Неверный текущий пароль'); return; }
+  if(np.length<4){ showToast('⚠ Слишком короткий пароль'); return; }
+  if(np!==np2){ showToast('⚠ Пароли не совпадают'); return; }
+  PASS=np;
+  ['s-old-pw','s-pw','s-pw2'].forEach(id=>{ const el=g(id); if(el) el.value=''; });
+  schedSave(); showToast('✿ Пароль изменён!');
+}
+
+/* ═══════════════════════════════════════
+   ЭКСПОРТ JSON / СБРОС
+═══════════════════════════════════════ */
+function exportSettings(){
+  try {
+    saveAll();
+    const raw=localStorage.getItem(STORE_KEY); if(!raw){ showToast('⚠ Нечего экспортировать'); return; }
+    const blob=new Blob([raw],{type:'application/json'});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a'); a.href=url; a.download='masterskaya-backup.json'; a.click();
+    URL.revokeObjectURL(url);
+    showToast('📥 Данные экспортированы!');
+  } catch(e){ showToast('⚠ Ошибка'); }
+}
+function resetAll(){
+  if(!confirm('Сбросить ВСЕ настройки?\n\nЭто действие необратимо.')) return;
+  localStorage.removeItem(STORE_KEY); location.reload();
+}
+
+/* ══════════════════════════════════════
+   АВТО-СОХРАНЕНИЕ
+══════════════════════════════════════ */
+setInterval(saveAll, 30000);
+// Авто-синхронизация с облаком каждые 5 минут
+setInterval(()=>{ if(FB_URL&&FB_SECRET) cloudAutoLoad(); }, 300000);
+
+</script>
+</body>
+</html>
