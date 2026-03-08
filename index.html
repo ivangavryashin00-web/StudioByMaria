@@ -1036,8 +1036,6 @@ body.edit-mode [data-editable]:hover{box-shadow:0 0 0 2px rgba(212,119,138,.5);b
     </div>
     <div id="aerr" style="font-size:.74rem;color:var(--rose);margin-bottom:12px;display:none">Неверный пароль. Попробуйте ещё раз.</div>
     <button class="submit-btn" onclick="tryLogin()">Войти →</button>
-    <div class="adm-tip" style="margin-top:18px">Пароль по умолчанию: <strong>mari2025</strong><br>Смените в разделе «Настройки».</div>
-  </div>
 </div>
 <!-- ADMIN PANEL -->
 <div id="admin-panel">
@@ -2893,7 +2891,7 @@ function changePwd(){
   if(np!==np2){ showToast('⚠ Пароли не совпадают'); return; }
   PASS=np;
   ['s-old-pw','s-pw','s-pw2'].forEach(id=>{ const el=g(id); if(el) el.value=''; });
-  schedSave(); showToast('✿ Пароль изменён!');
+ saveAll(); cloudSaveNow(); showToast('✿ Пароль изменён и сохранён в облако!');
 }
 
 /* ═══════════════════════════════════════
